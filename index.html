@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>DACH Motors — Catálogo Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────
+   RESET & TOKENS
+───────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+:root {
+  --blk:   #060608;
+  --blk2:  #0e0e12;
+  --card:  #13131a;
+  --bdr:   #1e1e2a;
+  --bdr2:  #2a2a38;
+  --amb:   #E8A020;
+  --amb2:  #F5B835;
+  --amb3:  rgba(232,160,32,.12);
+  --wht:   #F0F0F5;
+  --gray:  #7a7a90;
+  --gray2: #3a3a50;
+  --font-h:'Bebas Neue', sans-serif;
+  --font-b:'Inter', sans-serif;
+  --r:4px;
+  --nav-h:58px;
+}
+html { font-size:16px; }
+body {
+  background:var(--blk);
+  color:var(--wht);
+  font-family:var(--font-b);
+  overflow:hidden;
+  height:100dvh;
+  height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────── */
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--blk2); }
+::-webkit-scrollbar-thumb { background:var(--amb); border-radius:2px; }
+
+/* ─────────────────────────────────────────
+   TOP NAV
+───────────────────────────────────────── */
+#nav {
+  position:fixed; top:0; left:0; right:0; z-index:999;
+  height:var(--nav-h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 16px;
+  background:rgba(6,6,8,.92);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--bdr);
+}
+
+.nav-logo {
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none;
+}
+.nav-logo svg { width:80px; height:auto; }
+
+.nav-right { display:flex; align-items:center; gap:8px; }
+
+.nav-cta {
+  background:var(--amb); color:#000;
+  border:none; border-radius:var(--r);
+  font-family:var(--font-b); font-size:11px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:9px 16px; cursor:pointer;
+  transition:background .2s, transform .15s;
+  white-space:nowrap;
+}
+.nav-cta:active { transform:scale(.97); }
+
+.nav-menu-btn {
+  background:none; border:1px solid var(--bdr2);
+  border-radius:var(--r); padding:9px 12px;
+  cursor:pointer; display:flex; flex-direction:column;
+  gap:5px; transition:border-color .2s;
+}
+.nav-menu-btn span {
+  display:block; width:20px; height:1.5px;
+  background:var(--wht); border-radius:2px;
+  transition:all .3s;
+}
+.nav-menu-btn.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+.nav-menu-btn.open span:nth-child(2) { opacity:0; }
+.nav-menu-btn.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+/* ─────────────────────────────────────────
+   SLIDE-IN MENU
+───────────────────────────────────────── */
+#drawer {
+  position:fixed; top:var(--nav-h); left:0; right:0; bottom:0; z-index:998;
+  background:rgba(6,6,8,.97);
+  backdrop-filter:blur(30px);
+  transform:translateY(-110%);
+  transition:transform .45s cubic-bezier(.77,0,.175,1);
+  display:flex; flex-direction:column;
+  padding:40px 24px;
+  gap:6px;
+  overflow-y:auto;
+}
+#drawer.open { transform:translateY(0); }
+
+.drawer-item {
+  display:flex; align-items:center; gap:16px;
+  padding:18px 16px;
+  border:1px solid var(--bdr);
+  border-radius:var(--r);
+  cursor:pointer;
+  transition:all .2s;
+  background:var(--blk2);
+}
+.drawer-item:active { background:var(--card); }
+.drawer-item.active { border-color:var(--amb); background:var(--amb3); }
+
+.drawer-item-icon {
+  width:40px; height:40px;
+  background:var(--card);
+  border-radius:var(--r);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; flex-shrink:0;
+}
+.drawer-item.active .drawer-item-icon { background:var(--amb3); }
+
+.drawer-item-text { flex:1; }
+.drawer-item-title {
+  font-family:var(--font-h); font-size:22px; letter-spacing:2px;
+  line-height:1; margin-bottom:3px;
+}
+.drawer-item-sub { font-size:11px; color:var(--gray); letter-spacing:.5px; }
+
+.drawer-arrow { color:var(--gray2); font-size:18px; transition:transform .2s; }
+.drawer-item.active .drawer-arrow { color:var(--amb); transform:translateX(4px); }
+
+.drawer-models {
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid var(--bdr);
+}
+.drawer-models-label {
+  font-size:10px; letter-spacing:3px; color:var(--amb);
+  text-transform:uppercase; margin-bottom:12px; padding:0 4px;
+}
+.drawer-models-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+.drawer-model-card {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:14px 10px;
+  cursor:pointer; transition:all .2s; text-align:center;
+}
+.drawer-model-card:active { border-color:var(--amb); background:var(--amb3); transform:scale(.97); }
+.drawer-model-card .dm-icon { font-size:22px; margin-bottom:6px; }
+.drawer-model-card .dm-name {
+  font-family:var(--font-h); font-size:16px; letter-spacing:2px;
+  display:block; margin-bottom:2px;
+}
+.drawer-model-card .dm-sub { font-size:9px; color:var(--gray); letter-spacing:.5px; }
+
+/* ─────────────────────────────────────────
+   PAGES
+───────────────────────────────────────── */
+#pages {
+  position:fixed;
+  top:var(--nav-h); left:0; right:0;
+  bottom:0;
+  overflow:hidden;
+}
+
+.page {
+  position:absolute; inset:0;
+  overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  transform:translateX(100%);
+  transition:transform .55s cubic-bezier(.77,0,.175,1);
+  will-change:transform;
+}
+.page.active  { transform:translateX(0); }
+.page.behind  { transform:translateX(-6%); }
+
+/* ─────────────────────────────────────────
+   BOTTOM TAB BAR (mobile-style)
+───────────────────────────────────────── */
+#tabbar {
+  position:fixed; bottom:0; left:0; right:0; z-index:997;
+  height:64px;
+  background:rgba(6,6,8,.97);
+  backdrop-filter:blur(24px);
+  border-top:1px solid var(--bdr);
+  display:flex; align-items:center;
+}
+
+.tab {
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:4px; cursor:pointer; padding:8px 0;
+  transition:all .2s;
+  position:relative;
+}
+.tab::after {
+  content:'';
+  position:absolute; bottom:0; left:50%; right:50%;
+  height:2px; background:var(--amb);
+  border-radius:2px 2px 0 0;
+  transition:all .3s;
+}
+.tab.active::after { left:20%; right:20%; }
+
+.tab-icon { font-size:20px; transition:transform .2s; }
+.tab.active .tab-icon { transform:translateY(-2px); }
+.tab-label { font-size:9px; letter-spacing:1px; color:var(--gray); text-transform:uppercase; font-weight:500; }
+.tab.active .tab-label { color:var(--amb); }
+
+/* Extra bottom padding for content above tabbar */
+.page-content { padding-bottom:80px; }
+
+/* ─────────────────────────────────────────
+   UTILITY CLASSES
+───────────────────────────────────────── */
+.eyebrow {
+  display:flex; align-items:center; gap:10px;
+  font-size:10px; letter-spacing:4px; color:var(--amb);
+  text-transform:uppercase; margin-bottom:10px;
+}
+.eyebrow::before { content:''; width:28px; height:1px; background:var(--amb); flex-shrink:0; }
+
+.h1 { font-family:var(--font-h); font-size:clamp(52px,12vw,90px); line-height:.92; letter-spacing:2px; }
+.h2 { font-family:var(--font-h); font-size:clamp(36px,8vw,64px); line-height:.95; letter-spacing:1px; }
+.h3 { font-family:var(--font-h); font-size:clamp(26px,6vw,44px); line-height:1; letter-spacing:1px; }
+
+.btn-p {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--amb); color:#000;
+  border:none; border-radius:var(--r);
+  font-family:var(--font-b); font-size:12px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:14px 24px; cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.btn-p:active { transform:scale(.97); }
+
+.btn-o {
+  display:inline-flex; align-items:center; gap:8px;
+  background:none; color:var(--wht);
+  border:1px solid var(--bdr2); border-radius:var(--r);
+  font-family:var(--font-b); font-size:12px; font-weight:500;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:14px 24px; cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.btn-o:active { border-color:var(--amb); color:var(--amb); transform:scale(.97); }
+
+.divider { width:100%; height:1px; background:var(--bdr); margin:40px 0; }
+
+/* ─────────────────────────────────────────
+   PAGE 0 — HERO
+───────────────────────────────────────── */
+#p0 {
+  background:
+    radial-gradient(ellipse 120% 80% at 60% 30%, rgba(232,160,32,.1) 0%, transparent 55%),
+    var(--blk);
+}
+
+.hero-wrap {
+  min-height:calc(100dvh - var(--nav-h) - 64px);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  position:relative; overflow:hidden;
+}
+
+.hero-img {
+  position:absolute; inset:0;
+  background:
+    linear-gradient(to bottom, transparent 40%, rgba(6,6,8,.85) 75%, var(--blk) 100%),
+    linear-gradient(to right, rgba(6,6,8,.5) 0%, transparent 60%);
+  z-index:1;
+}
+
+.hero-bg-image {
+  position:absolute; inset:0; z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80');
+  background-size:cover; background-position:center;
+  filter:brightness(.45) saturate(1.1);
+}
+
+/* Animated grid overlay */
+.hero-grid {
+  position:absolute; inset:0; z-index:1;
+  background-image:
+    linear-gradient(rgba(232,160,32,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,160,32,.04) 1px, transparent 1px);
+  background-size:50px 50px;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove { from { transform:translateY(0); } to { transform:translateY(50px); } }
+
+.hero-content {
+  position:relative; z-index:2;
+  padding:24px 20px 32px;
+}
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(232,160,32,.15); border:1px solid rgba(232,160,32,.3);
+  border-radius:40px; padding:6px 14px;
+  font-size:11px; letter-spacing:2px; color:var(--amb);
+  text-transform:uppercase; margin-bottom:20px;
+  animation:fadeUp .6s ease both;
+}
+.hero-badge::before { content:'⚡'; font-size:13px; }
+
+.hero-title { animation:fadeUp .6s .1s ease both; }
+.hero-title em { color:var(--amb); font-style:normal; display:block; }
+
+.hero-sub {
+  font-size:15px; color:var(--gray); line-height:1.7;
+  margin:16px 0 28px; font-weight:300;
+  animation:fadeUp .6s .2s ease both;
+}
+
+.hero-actions {
+  display:flex; gap:10px; flex-wrap:wrap;
+  animation:fadeUp .6s .3s ease both;
+}
+
+/* Floating stats ribbon */
+.hero-stats {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; margin-top:28px;
+  animation:fadeUp .6s .4s ease both;
+}
+.hero-stat {
+  background:rgba(13,13,20,.85);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--bdr);
+  padding:14px 12px;
+  text-align:center;
+}
+.hero-stat:first-child { border-radius:var(--r) 0 0 var(--r); }
+.hero-stat:last-child  { border-radius:0 var(--r) var(--r) 0; }
+.hero-stat-val { font-family:var(--font-h); font-size:28px; color:var(--amb); line-height:1; }
+.hero-stat-lbl { font-size:9px; letter-spacing:2px; color:var(--gray); text-transform:uppercase; margin-top:3px; }
+
+/* Scroll cue */
+.scroll-cue {
+  position:absolute; bottom:84px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:6px;
+  color:var(--gray2); font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  animation:bounce 2s ease-in-out infinite;
+}
+.scroll-cue::after { content:''; width:1px; height:32px; background:linear-gradient(var(--amb),transparent); }
+@keyframes bounce { 0%,100%{opacity:.3;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-4px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* ─────────────────────────────────────────
+   FEATURE CARDS (homepage)
+───────────────────────────────────────── */
+.home-section { padding:40px 20px; }
+
+.section-header { margin-bottom:32px; }
+
+.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.feat-card {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:20px 16px;
+  transition:all .25s; cursor:pointer;
+  position:relative; overflow:hidden;
+}
+.feat-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, var(--amb3) 0%, transparent 60%);
+  opacity:0; transition:opacity .3s;
+}
+.feat-card:active::before, .feat-card:hover::before { opacity:1; }
+.feat-card:active { transform:scale(.98); }
+.feat-icon { font-size:28px; margin-bottom:12px; }
+.feat-title { font-family:var(--font-h); font-size:18px; letter-spacing:1px; margin-bottom:6px; }
+.feat-desc { font-size:12px; color:var(--gray); line-height:1.6; }
+
+/* Model preview cards */
+.models-preview { display:flex; flex-direction:column; gap:12px; }
+.model-prev-card {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); overflow:hidden;
+  cursor:pointer; transition:all .25s;
+  display:flex; align-items:stretch;
+}
+.model-prev-card:active { transform:scale(.98); border-color:var(--amb); }
+
+.model-prev-img {
+  width:120px; flex-shrink:0;
+  background:var(--blk2);
+  display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.model-prev-img img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.7) saturate(1.2);
+}
+.model-prev-img .model-prev-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, transparent, rgba(19,19,26,.6));
+}
+
+.model-prev-info { flex:1; padding:16px; display:flex; flex-direction:column; justify-content:space-between; }
+.model-prev-eyebrow { font-size:9px; letter-spacing:3px; color:var(--amb); text-transform:uppercase; margin-bottom:4px; }
+.model-prev-name { font-family:var(--font-h); font-size:28px; letter-spacing:2px; line-height:1; margin-bottom:6px; }
+.model-prev-desc { font-size:12px; color:var(--gray); line-height:1.5; flex:1; }
+.model-prev-arrow {
+  margin-top:12px; display:inline-flex; align-items:center; gap:6px;
+  font-size:10px; letter-spacing:2px; color:var(--amb); text-transform:uppercase;
+  font-weight:600;
+}
+
+/* ─────────────────────────────────────────
+   PAGE 1 — EMPRESA
+───────────────────────────────────────── */
+.empresa-wrap { padding:24px 20px; }
+
+.tech-specs-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:24px 0;
+}
+.spec-tile {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:20px 16px;
+  position:relative; overflow:hidden;
+}
+.spec-tile::after {
+  content:attr(data-idx);
+  position:absolute; top:8px; right:12px;
+  font-family:var(--font-h); font-size:50px;
+  color:rgba(232,160,32,.06); line-height:1;
+}
+.spec-tile-val { font-family:var(--font-h); font-size:32px; color:var(--amb); line-height:1; }
+.spec-tile-unit { font-size:12px; color:var(--gray); margin:2px 0 8px; }
+.spec-tile-lbl { font-size:11px; color:var(--gray2); letter-spacing:1px; text-transform:uppercase; }
+
+.diagram-wrap {
+  background:var(--blk2); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:20px;
+  margin:24px 0;
+}
+.diagram-title { font-family:var(--font-h); font-size:18px; letter-spacing:2px; margin-bottom:16px; color:var(--amb); }
+
+/* SVG diagram */
+.diagram-svg { width:100%; height:auto; }
+
+.pillar-list { display:flex; flex-direction:column; gap:8px; }
+.pillar-item {
+  background:var(--card); border:1px solid var(--bdr);
+  border-left:3px solid var(--amb);
+  border-radius:var(--r); padding:16px;
+  display:flex; gap:14px; align-items:flex-start;
+}
+.pillar-item-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+.pillar-item-title { font-family:var(--font-h); font-size:18px; letter-spacing:1px; margin-bottom:4px; }
+.pillar-item-desc { font-size:13px; color:var(--gray); line-height:1.6; }
+
+/* ─────────────────────────────────────────
+   PAGE 2 — MODELOS
+───────────────────────────────────────── */
+.modelos-wrap { padding:0; }
+
+/* Model selector tabs - horizontal scroll */
+.model-selector {
+  display:flex; gap:6px; padding:20px 20px 0;
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none; flex-shrink:0;
+}
+.model-selector::-webkit-scrollbar { display:none; }
+
+.ms-tab {
+  flex-shrink:0;
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:12px 20px;
+  cursor:pointer; transition:all .25s;
+}
+.ms-tab.active { background:var(--amb3); border-color:var(--amb); }
+.ms-tab-name { font-family:var(--font-h); font-size:20px; letter-spacing:2px; line-height:1; }
+.ms-tab.active .ms-tab-name { color:var(--amb); }
+.ms-tab-sub { font-size:9px; color:var(--gray); letter-spacing:1px; text-transform:uppercase; margin-top:2px; }
+
+/* Model panels */
+.model-panels { position:relative; overflow:hidden; }
+.mp { display:none; padding:16px 20px 24px; }
+.mp.active { display:block; animation:fadeUp .35s ease; }
+
+.mp-hero {
+  width:100%; aspect-ratio:16/9; border-radius:var(--r);
+  overflow:hidden; position:relative; margin-bottom:16px;
+  background:var(--blk2);
+}
+.mp-hero img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.75) saturate(1.3);
+}
+.mp-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(6,6,8,.85) 0%, transparent 50%);
+}
+.mp-hero-badge {
+  position:absolute; top:12px; left:12px;
+  background:rgba(6,6,8,.8); border:1px solid var(--bdr2);
+  border-left:3px solid var(--amb);
+  padding:6px 12px; font-size:9px; letter-spacing:2px;
+  color:var(--amb); text-transform:uppercase; font-weight:600;
+  backdrop-filter:blur(10px);
+  border-radius:0 var(--r) var(--r) 0;
+}
+.mp-hero-label {
+  position:absolute; bottom:16px; left:16px; right:16px;
+}
+
+.mp-name { font-family:var(--font-h); font-size:48px; letter-spacing:3px; line-height:.9; }
+.mp-tagline { font-size:12px; letter-spacing:2px; color:var(--amb); text-transform:uppercase; margin-top:4px; }
+
+.mp-desc {
+  font-size:14px; color:var(--gray); line-height:1.8;
+  margin:16px 0; font-weight:300;
+  padding:16px; border-left:2px solid var(--bdr2);
+  background:var(--card); border-radius:0 var(--r) var(--r) 0;
+}
+
+.mp-features { display:flex; flex-direction:column; gap:6px; margin:16px 0; }
+.mpf {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:14px 16px;
+  display:flex; gap:14px; align-items:flex-start;
+}
+.mpf-num {
+  font-family:var(--font-h); font-size:28px; color:var(--amb); line-height:1; flex-shrink:0; width:28px;
+}
+.mpf-body strong { font-size:13px; color:var(--wht); display:block; margin-bottom:2px; }
+.mpf-body span { font-size:12px; color:var(--gray); line-height:1.5; }
+
+.mp-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:20px; }
+.mp-actions .btn-p, .mp-actions .btn-o { flex:1; justify-content:center; }
+
+/* Color swatches */
+.color-picker { display:flex; gap:10px; align-items:center; margin:12px 0 20px; }
+.color-picker-label { font-size:10px; letter-spacing:2px; color:var(--gray); text-transform:uppercase; }
+.cp-dot {
+  width:28px; height:28px; border-radius:50%;
+  cursor:pointer; border:2px solid transparent;
+  transition:all .2s;
+}
+.cp-dot.active, .cp-dot:active { border-color:var(--wht); transform:scale(1.2); }
+
+/* ─────────────────────────────────────────
+   PAGE 3 — VIEWER 3D
+───────────────────────────────────────── */
+.viewer-wrap {
+  height:calc(100dvh - var(--nav-h) - 64px);
+  height:calc(100vh - var(--nav-h) - 64px);
+  display:flex; flex-direction:column;
+}
+
+.viewer-topbar {
+  padding:16px 20px; flex-shrink:0;
+  background:var(--blk2); border-bottom:1px solid var(--bdr);
+}
+
+.viewer-model-select {
+  display:flex; gap:6px; margin-top:10px;
+}
+.vms-btn {
+  flex:1; background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:9px 6px;
+  cursor:pointer; text-align:center; transition:all .2s;
+}
+.vms-btn.active { background:var(--amb3); border-color:var(--amb); }
+.vms-btn-name { font-family:var(--font-h); font-size:16px; letter-spacing:1px; }
+.vms-btn.active .vms-btn-name { color:var(--amb); }
+.vms-btn-sub { font-size:8px; color:var(--gray); text-transform:uppercase; letter-spacing:1px; }
+
+.canvas-wrap {
+  flex:1; position:relative; overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,160,32,.07) 0%, var(--blk) 70%);
+}
+#three-canvas { display:block; width:100%; height:100%; touch-action:none; }
+
+.viewer-hud {
+  position:absolute; bottom:12px; left:50%; transform:translateX(-50%);
+  background:rgba(6,6,8,.8); border:1px solid var(--bdr);
+  border-radius:40px; padding:8px 18px;
+  font-size:11px; color:var(--gray); letter-spacing:1px;
+  backdrop-filter:blur(20px);
+  display:flex; gap:12px; align-items:center;
+  white-space:nowrap;
+}
+
+.viewer-colors {
+  position:absolute; right:12px; top:50%; transform:translateY(-50%);
+  display:flex; flex-direction:column; gap:10px;
+  background:rgba(6,6,8,.7); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:12px 10px;
+  backdrop-filter:blur(20px);
+}
+.vc-dot {
+  width:26px; height:26px; border-radius:50%;
+  cursor:pointer; border:2px solid transparent;
+  transition:all .2s;
+}
+.vc-dot.active, .vc-dot:active { border-color:var(--wht); transform:scale(1.15); }
+
+.viewer-specs {
+  position:absolute; left:12px; top:12px;
+  background:rgba(6,6,8,.8); border:1px solid var(--bdr);
+  border-left:3px solid var(--amb);
+  border-radius:0 var(--r) var(--r) 0; padding:14px 16px;
+  backdrop-filter:blur(20px); min-width:150px;
+}
+.vs-model { font-family:var(--font-h); font-size:24px; letter-spacing:2px; margin-bottom:10px; }
+.vs-row { display:flex; justify-content:space-between; gap:20px; padding:5px 0; border-bottom:1px solid var(--bdr); font-size:11px; }
+.vs-row:last-child { border-bottom:none; }
+.vs-lbl { color:var(--gray); }
+.vs-val { color:var(--wht); font-weight:600; }
+
+/* ─────────────────────────────────────────
+   PAGE 4 — CONTATO
+───────────────────────────────────────── */
+.contato-wrap { padding:24px 20px; }
+
+.why-cards { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:20px 0; }
+.why-card {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:16px;
+  transition:all .2s;
+}
+.why-card:active { border-color:var(--amb); background:var(--amb3); }
+.why-card-icon { font-size:24px; margin-bottom:8px; }
+.why-card-title { font-family:var(--font-h); font-size:16px; letter-spacing:1px; margin-bottom:4px; }
+.why-card-desc { font-size:11px; color:var(--gray); line-height:1.5; }
+
+.form-block { display:flex; flex-direction:column; gap:12px; margin-top:24px; }
+.form-group { display:flex; flex-direction:column; gap:6px; }
+.form-label { font-size:10px; letter-spacing:2px; color:var(--gray); text-transform:uppercase; }
+.form-input, .form-select, .form-textarea {
+  width:100%; background:var(--card); border:1px solid var(--bdr);
+  color:var(--wht); font-family:var(--font-b); font-size:14px;
+  padding:14px 16px; border-radius:var(--r); outline:none;
+  transition:border-color .2s; -webkit-appearance:none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color:var(--amb); }
+.form-select { cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237a7a90' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; }
+option { background:var(--card); color:var(--wht); }
+.form-textarea { resize:vertical; min-height:90px; }
+
+.contact-links { display:flex; flex-direction:column; gap:8px; margin-top:20px; }
+.contact-link {
+  background:var(--card); border:1px solid var(--bdr);
+  border-radius:var(--r); padding:16px;
+  display:flex; gap:14px; align-items:center;
+  cursor:pointer; transition:all .2s;
+  text-decoration:none; color:inherit;
+}
+.contact-link:active { border-color:var(--amb); background:var(--amb3); }
+.cl-icon {
+  width:40px; height:40px; border-radius:var(--r);
+  background:var(--amb3); display:flex; align-items:center;
+  justify-content:center; font-size:18px; flex-shrink:0;
+}
+.cl-label { font-size:10px; letter-spacing:2px; color:var(--amb); text-transform:uppercase; margin-bottom:3px; }
+.cl-value { font-size:14px; color:var(--wht); font-weight:500; }
+
+/* ─────────────────────────────────────────
+   TOAST NOTIFICATION
+───────────────────────────────────────── */
+#toast {
+  position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
+  background:var(--amb); color:#000;
+  font-size:13px; font-weight:700; letter-spacing:1px;
+  padding:12px 24px; border-radius:40px;
+  opacity:0; transition:all .3s; z-index:9999;
+  white-space:nowrap; pointer-events:none;
+}
+#toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* ─────────────────────────────────────────
+   PAGE FOOTER
+───────────────────────────────────────── */
+.pg-footer {
+  padding:24px 20px; border-top:1px solid var(--bdr);
+  display:flex; flex-direction:column; gap:6px; align-items:center;
+  text-align:center; margin-top:20px;
+}
+.pg-footer-logo { font-family:var(--font-h); font-size:22px; letter-spacing:5px; color:var(--gray2); }
+.pg-footer-tag { font-size:10px; letter-spacing:2px; color:var(--gray2); }
+
+/* ─────────────────────────────────────────
+   ANIMATIONS & STATES
+───────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { transition:none!important; animation:none!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── NAV ─────────── -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="goTo(0);return false;">
+    <!-- DACH SVG Logo -->
+    <svg viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text y="28" font-family="'Bebas Neue',sans-serif" font-size="30" letter-spacing="4" fill="#F0F0F5">DACH</text>
+      <text x="96" y="28" font-family="'Bebas Neue',sans-serif" font-size="10" letter-spacing="2" fill="#E8A020">DCO</text>
+      <rect x="0" y="30" width="120" height="1" fill="rgba(232,160,32,.3)"/>
+    </svg>
+  </a>
+  <div class="nav-right">
+    <button class="nav-cta" onclick="goTo(4)">Parceiro</button>
+    <button class="nav-menu-btn" id="menuBtn" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─────────── DRAWER MENU ─────────── -->
+<div id="drawer">
+  <div class="drawer-item active" onclick="drawerGoTo(0)" id="di0">
+    <div class="drawer-item-icon">🏠</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-title">INÍCIO</div>
+      <div class="drawer-item-sub">Apresentação e destaques</div>
+    </div>
+    <div class="drawer-arrow">›</div>
+  </div>
+  <div class="drawer-item" onclick="drawerGoTo(1)" id="di1">
+    <div class="drawer-item-icon">🏭</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-title">EMPRESA</div>
+      <div class="drawer-item-sub">Tecnologia e diferenciais</div>
+    </div>
+    <div class="drawer-arrow">›</div>
+  </div>
+  <div class="drawer-item" onclick="drawerGoTo(2)" id="di2">
+    <div class="drawer-item-icon">🚗</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-title">MODELOS</div>
+      <div class="drawer-item-sub">Falcon · Apollo · DCO</div>
+    </div>
+    <div class="drawer-arrow">›</div>
+  </div>
+  <div class="drawer-item" onclick="drawerGoTo(3)" id="di3">
+    <div class="drawer-item-icon">🔄</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-title">VISUALIZAR 360°</div>
+      <div class="drawer-item-sub">Modelo 3D interativo</div>
+    </div>
+    <div class="drawer-arrow">›</div>
+  </div>
+  <div class="drawer-item" onclick="drawerGoTo(4)" id="di4">
+    <div class="drawer-item-icon">📞</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-title">CONTATO</div>
+      <div class="drawer-item-sub">Seja um parceiro DACH</div>
+    </div>
+    <div class="drawer-arrow">›</div>
+  </div>
+
+  <div class="drawer-models">
+    <div class="drawer-models-label">Ver modelo diretamente</div>
+    <div class="drawer-models-grid">
+      <div class="drawer-model-card" onclick="drawerGoTo(2);setTimeout(()=>switchModel('falcon'),400)">
+        <div class="dm-icon">☀️</div>
+        <span class="dm-name">FALCON</span>
+        <div class="dm-sub">Solar 2+2</div>
+      </div>
+      <div class="drawer-model-card" onclick="drawerGoTo(2);setTimeout(()=>switchModel('apollo'),400)">
+        <div class="dm-icon">🏆</div>
+        <span class="dm-name">APOLLO</span>
+        <div class="dm-sub">Performance</div>
+      </div>
+      <div class="drawer-model-card" onclick="drawerGoTo(2);setTimeout(()=>switchModel('dco'),400)">
+        <div class="dm-icon">🤖</div>
+        <span class="dm-name">DCO</span>
+        <div class="dm-sub">Autopilot</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────── PAGES ─────────── -->
+<div id="pages">
+
+<!-- ══════ PAGE 0 — INÍCIO ══════ -->
+<div class="page active" id="p0">
+  <div class="page-content">
+    <div class="hero-wrap">
+      <div class="hero-bg-image"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-img"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Mobilidade Elétrica Premium</div>
+        <h1 class="h1 hero-title">
+          DESCUBRA<br>
+          O FUTURO DO
+          <em>TRANSPORTE</em>
+        </h1>
+        <p class="hero-sub">
+          DACH Motors redefine a mobilidade elétrica com engenharia 72V AC, eficiência energética superior e uma experiência de condução acima do padrão do segmento.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-p" onclick="goTo(2)">Ver Modelos →</button>
+          <button class="btn-o" onclick="goTo(3)">Explorar 360°</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-val">72V</div>
+            <div class="hero-stat-lbl">Sistema AC</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">6.3kW</div>
+            <div class="hero-stat-lbl">Potência</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-val">105Ah</div>
+            <div class="hero-stat-lbl">LiFePO4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick features -->
+    <div class="home-section">
+      <div class="section-header">
+        <div class="eyebrow">Nossos Diferenciais</div>
+        <div class="h3">ENGENHARIA +<br>PERFORMANCE</div>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card" onclick="goTo(1)">
+          <div class="feat-icon">⚡</div>
+          <div class="feat-title">INOVAÇÃO</div>
+          <div class="feat-desc">Motor AC 72V com controlador inteligente 350A e bateria LiFePO4.</div>
+        </div>
+        <div class="feat-card" onclick="goTo(1)">
+          <div class="feat-icon">🔄</div>
+          <div class="feat-title">VERSATIL.</div>
+          <div class="feat-desc">Residencial, comercial ou lazer — um portfólio para cada aplicação.</div>
+        </div>
+        <div class="feat-card" onclick="goTo(1)">
+          <div class="feat-icon">🌿</div>
+          <div class="feat-title">SUSTENT.</div>
+          <div class="feat-desc">Energia solar integrada e zero emissões — o futuro hoje.</div>
+        </div>
+        <div class="feat-card" onclick="goTo(4)">
+          <div class="feat-icon">🤝</div>
+          <div class="feat-title">PARCERIA</div>
+          <div class="feat-desc">Mercado em expansão com suporte dedicado e margem saudável.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Models preview -->
+    <div class="home-section" style="padding-top:0">
+      <div class="section-header">
+        <div class="eyebrow">Portfolio</div>
+        <div class="h3">NOSSOS MODELOS</div>
+      </div>
+      <div class="models-preview">
+        <div class="model-prev-card" onclick="goTo(2);setTimeout(()=>switchModel('falcon'),400)">
+          <div class="model-prev-img">
+            <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=300&q=80" alt="Falcon">
+            <div class="model-prev-overlay"></div>
+          </div>
+          <div class="model-prev-info">
+            <div>
+              <div class="model-prev-eyebrow">☀️ Solar · 2+2 Lugares</div>
+              <div class="model-prev-name">FALCON</div>
+              <div class="model-prev-desc">Para quem busca inovação, energia solar integrada e conforto familiar.</div>
+            </div>
+            <div class="model-prev-arrow">Ver modelo ›</div>
+          </div>
+        </div>
+        <div class="model-prev-card" onclick="goTo(2);setTimeout(()=>switchModel('apollo'),400)">
+          <div class="model-prev-img">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&q=80" alt="Apollo">
+            <div class="model-prev-overlay"></div>
+          </div>
+          <div class="model-prev-info">
+            <div>
+              <div class="model-prev-eyebrow">🏆 Alta Performance</div>
+              <div class="model-prev-name">APOLLO</div>
+              <div class="model-prev-desc">Robustez mecânica e conforto superior com Cruise Control exclusivo.</div>
+            </div>
+            <div class="model-prev-arrow">Ver modelo ›</div>
+          </div>
+        </div>
+        <div class="model-prev-card" onclick="goTo(2);setTimeout(()=>switchModel('dco'),400)">
+          <div class="model-prev-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=80" alt="DCO">
+            <div class="model-prev-overlay"></div>
+          </div>
+          <div class="model-prev-info">
+            <div>
+              <div class="model-prev-eyebrow">🤖 Piloto Automático</div>
+              <div class="model-prev-name">DCO</div>
+              <div class="model-prev-desc">O primeiro e único carrinho elétrico com piloto automático no mercado.</div>
+            </div>
+            <div class="model-prev-arrow">Ver modelo ›</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pg-footer">
+      <div class="pg-footer-logo">DACH MOTORS</div>
+      <div class="pg-footer-tag">DESCUBRA O FUTURO DO TRANSPORTE</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 1 — EMPRESA ══════ -->
+<div class="page" id="p1">
+  <div class="page-content empresa-wrap">
+    <div class="eyebrow">Sobre a DACH Motors</div>
+    <div class="h2">REDEFININDO<br>A MOBILIDADE</div>
+
+    <div class="divider" style="margin:20px 0;"></div>
+
+    <p style="font-size:14px;color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:20px;">
+      A <strong style="color:var(--wht)">DACH Motors</strong> atua de forma estratégica na construção de um ecossistema de <strong style="color:var(--wht)">mobilidade sustentável</strong>, com margem saudável, diferenciação competitiva e portfólio alinhado às demandas do mercado brasileiro.
+    </p>
+    <p style="font-size:14px;color:var(--gray);line-height:1.8;font-weight:300;">
+      Atendemos desde aplicações <strong style="color:var(--wht)">residenciais e urbanas</strong> até operações de lazer e uso comercial. Na DACH, entregamos mobilidade elétrica que funciona, dura e faz sentido no mundo real.
+    </p>
+
+    <!-- Tech Specs -->
+    <div style="margin-top:28px;">
+      <div class="eyebrow">Especificações Técnicas</div>
+      <div class="tech-specs-grid">
+        <div class="spec-tile" data-idx="01">
+          <div class="spec-tile-val">72V AC</div>
+          <div class="spec-tile-unit">Motor</div>
+          <div class="spec-tile-lbl">6.3 kW Potência</div>
+        </div>
+        <div class="spec-tile" data-idx="02">
+          <div class="spec-tile-val">350A</div>
+          <div class="spec-tile-unit">Controlador AC</div>
+          <div class="spec-tile-lbl">72V Inteligente</div>
+        </div>
+        <div class="spec-tile" data-idx="03">
+          <div class="spec-tile-val">105Ah</div>
+          <div class="spec-tile-unit">Bateria LiFePO4</div>
+          <div class="spec-tile-lbl">73.6V — 7.728 kWh</div>
+        </div>
+        <div class="spec-tile" data-idx="04">
+          <div class="spec-tile-val">20A</div>
+          <div class="spec-tile-unit">Carregamento</div>
+          <div class="spec-tile-lbl">110–240V Interno</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagram -->
+    <div class="diagram-wrap">
+      <div class="diagram-title">⚙️ SISTEMA INTEGRADO</div>
+      <svg class="diagram-svg" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cart body -->
+        <rect x="100" y="60" width="160" height="70" rx="6" fill="#111118" stroke="#2a2a38" stroke-width="1.5"/>
+        <!-- Roof -->
+        <rect x="95" y="35" width="170" height="30" rx="4" fill="#0e0e14" stroke="#E8A020" stroke-width="1"/>
+        <rect x="95" y="63" width="170" height="3" rx="1.5" fill="#E8A020" opacity="0.5"/>
+        <!-- Posts -->
+        <rect x="97" y="63" width="7" height="55" fill="#1a1a2a"/>
+        <rect x="258" y="63" width="7" height="55" fill="#1a1a2a"/>
+        <!-- Wheels -->
+        <circle cx="130" cy="150" r="22" fill="#0a0a0f" stroke="#333" stroke-width="2"/>
+        <circle cx="130" cy="150" r="13" fill="#060610" stroke="#E8A020" stroke-width="1.2"/>
+        <circle cx="130" cy="150" r="5" fill="#111" stroke="#555" stroke-width="1"/>
+        <circle cx="230" cy="150" r="22" fill="#0a0a0f" stroke="#333" stroke-width="2"/>
+        <circle cx="230" cy="150" r="13" fill="#060610" stroke="#E8A020" stroke-width="1.2"/>
+        <circle cx="230" cy="150" r="5" fill="#111" stroke="#555" stroke-width="1"/>
+        <!-- Seats -->
+        <rect x="135" y="72" width="40" height="30" rx="3" fill="#E8A020" opacity="0.8"/>
+        <rect x="185" y="72" width="40" height="30" rx="3" fill="#E8A020" opacity="0.6"/>
+        <!-- Labels -->
+        <!-- Motor -->
+        <circle cx="18" cy="70" r="12" fill="#E8A020" opacity="0.15" stroke="#E8A020" stroke-width="1"/>
+        <text x="18" y="74" font-family="'Bebas Neue'" font-size="14" fill="#E8A020" text-anchor="middle">1</text>
+        <text x="34" y="66" font-size="8" fill="#7a7a90" font-family="Inter">Motor</text>
+        <text x="34" y="76" font-size="9" fill="#F0F0F5" font-family="Inter" font-weight="600">72V AC · 6.3kW</text>
+        <line x1="30" y1="70" x2="100" y2="95" stroke="#E8A020" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+        <!-- Battery -->
+        <circle cx="18" cy="120" r="12" fill="#E8A020" opacity="0.15" stroke="#E8A020" stroke-width="1"/>
+        <text x="18" y="124" font-family="'Bebas Neue'" font-size="14" fill="#E8A020" text-anchor="middle">3</text>
+        <text x="34" y="116" font-size="8" fill="#7a7a90" font-family="Inter">Bateria</text>
+        <text x="34" y="126" font-size="9" fill="#F0F0F5" font-family="Inter" font-weight="600">LiFePO4 105Ah</text>
+        <line x1="30" y1="120" x2="100" y2="120" stroke="#E8A020" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+        <!-- Controller -->
+        <circle cx="322" cy="80" r="12" fill="#E8A020" opacity="0.15" stroke="#E8A020" stroke-width="1"/>
+        <text x="322" y="84" font-family="'Bebas Neue'" font-size="14" fill="#E8A020" text-anchor="middle">2</text>
+        <text x="270" y="72" font-size="8" fill="#7a7a90" font-family="Inter" text-anchor="end">Controlador</text>
+        <text x="310" y="82" font-size="9" fill="#F0F0F5" font-family="Inter" font-weight="600" text-anchor="end">72V 350A AC</text>
+        <line x1="310" y1="80" x2="266" y2="95" stroke="#E8A020" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+        <!-- Charger -->
+        <circle cx="322" cy="130" r="12" fill="#E8A020" opacity="0.15" stroke="#E8A020" stroke-width="1"/>
+        <text x="322" y="134" font-family="'Bebas Neue'" font-size="14" fill="#E8A020" text-anchor="middle">4</text>
+        <text x="310" y="122" font-size="8" fill="#7a7a90" font-family="Inter" text-anchor="end">Carregador</text>
+        <text x="310" y="132" font-size="9" fill="#F0F0F5" font-family="Inter" font-weight="600" text-anchor="end">110–240V / 20A</text>
+        <line x1="310" y1="130" x2="266" y2="120" stroke="#E8A020" stroke-width="0.8" stroke-dasharray="4 3" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <!-- Pillars -->
+    <div class="eyebrow" style="margin-top:28px;">Pilares da Marca</div>
+    <div class="pillar-list">
+      <div class="pillar-item">
+        <div class="pillar-item-icon">⚡</div>
+        <div>
+          <div class="pillar-item-title">INOVAÇÃO</div>
+          <div class="pillar-item-desc">Motor AC 72V com eficiência superior aos sistemas tradicionais de 48V — mais aceleração, mais torque, menos calor.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-item-icon">🔄</div>
+        <div>
+          <div class="pillar-item-title">VERSATILIDADE</div>
+          <div class="pillar-item-desc">Portfólio completo para residências, condomínios, clubes, hotéis e operações comerciais — um DACH para cada cenário.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-item-icon">🌿</div>
+        <div>
+          <div class="pillar-item-title">SUSTENTABILIDADE</div>
+          <div class="pillar-item-desc">Na DACH Motors, a energia solar não é acessório — ela faz parte da lógica do produto e do nosso propósito.</div>
+        </div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-item-icon">🏆</div>
+        <div>
+          <div class="pillar-item-title">QUALIDADE AUTOMOTIVA</div>
+          <div class="pillar-item-desc">Chassi monobloco eletrodialítico, bancos ergonômicos forjados em peça única e acabamento de nível automotivo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;">
+      <button class="btn-p" style="width:100%;justify-content:center;" onclick="goTo(2)">Ver Todos os Modelos →</button>
+    </div>
+
+    <div class="pg-footer">
+      <div class="pg-footer-logo">DACH MOTORS</div>
+      <div class="pg-footer-tag">INOVAÇÃO · VERSATILIDADE · SUSTENTABILIDADE</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 2 — MODELOS ══════ -->
+<div class="page" id="p2">
+  <div class="page-content modelos-wrap">
+    <div style="padding:20px 20px 8px;">
+      <div class="eyebrow">Portfolio Completo</div>
+      <div class="h2">MODELOS</div>
+    </div>
+
+    <!-- Model tabs -->
+    <div class="model-selector" id="modelSelector">
+      <div class="ms-tab active" onclick="switchModel('falcon')" id="mst-falcon">
+        <div class="ms-tab-name">FALCON</div>
+        <div class="ms-tab-sub">☀️ Solar 2+2</div>
+      </div>
+      <div class="ms-tab" onclick="switchModel('apollo')" id="mst-apollo">
+        <div class="ms-tab-name">APOLLO</div>
+        <div class="ms-tab-sub">🏆 Performance</div>
+      </div>
+      <div class="ms-tab" onclick="switchModel('dco')" id="mst-dco">
+        <div class="ms-tab-name">DCO</div>
+        <div class="ms-tab-sub">🤖 Autopilot</div>
+      </div>
+    </div>
+
+    <!-- Model panels -->
+    <div class="model-panels">
+
+      <!-- FALCON -->
+      <div class="mp active" id="mp-falcon">
+        <div class="mp-hero">
+          <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80" alt="DACH Falcon">
+          <div class="mp-hero-overlay"></div>
+          <div class="mp-hero-badge">☀️ Solar · 2+2 Lugares</div>
+          <div class="mp-hero-label">
+            <div class="mp-name">FALCON</div>
+            <div class="mp-tagline">Inovação e Conforto</div>
+          </div>
+        </div>
+        <div class="color-picker">
+          <span class="color-picker-label">Cor:</span>
+          <div class="cp-dot active" style="background:#111118" onclick="cpClick(this)" title="Preto"></div>
+          <div class="cp-dot" style="background:#4a3fa0" onclick="cpClick(this)" title="Violeta"></div>
+          <div class="cp-dot" style="background:#c0c0c0" onclick="cpClick(this)" title="Prata"></div>
+          <div class="cp-dot" style="background:#8B0000" onclick="cpClick(this)" title="Vinho"></div>
+          <div class="cp-dot" style="background:#003366" onclick="cpClick(this)" title="Azul"></div>
+        </div>
+        <p class="mp-desc">
+          O <strong>Falcon 2+2</strong> é a resposta da DACH para quem quer eficiência energética com versatilidade familiar e operacional. Na DACH Motors, a energia solar não é acessório — ela faz parte da lógica do produto e do nosso propósito.
+        </p>
+        <div class="mp-features">
+          <div class="mpf">
+            <div class="mpf-num">1</div>
+            <div class="mpf-body">
+              <strong>Integração Solar</strong>
+              <span>Reduz o consumo elétrico da rede e o custo de operação do veículo.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">2</div>
+            <div class="mpf-body">
+              <strong>Bateria LiFePO4 73.6V — 7.728 kWh</strong>
+              <span>Mais segura, mais durável e estável termicamente em qualquer condição.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">3</div>
+            <div class="mpf-body">
+              <strong>Motor AC 5.3 kW</strong>
+              <span>Torque consistente entregue em qualquer condição de condução.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">4</div>
+            <div class="mpf-body">
+              <strong>Carregamento Flexível</strong>
+              <span>110V a 240V via carregador interno integrado de 20A.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">5</div>
+            <div class="mpf-body">
+              <strong>Configuração 2+2</strong>
+              <span>Ideal para transporte de passageiros em condomínios, lazer e clubes.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mp-actions">
+          <button class="btn-p" onclick="goTo(3)">Ver em 360° 🔄</button>
+          <button class="btn-o" onclick="goTo(4)">Solicitar Proposta</button>
+        </div>
+      </div>
+
+      <!-- APOLLO -->
+      <div class="mp" id="mp-apollo">
+        <div class="mp-hero">
+          <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80" alt="DACH Apollo">
+          <div class="mp-hero-overlay"></div>
+          <div class="mp-hero-badge">🏆 Alta Performance · Off-Road</div>
+          <div class="mp-hero-label">
+            <div class="mp-name">APOLLO</div>
+            <div class="mp-tagline">Robustez e Conforto Superior</div>
+          </div>
+        </div>
+        <div class="color-picker">
+          <span class="color-picker-label">Cor:</span>
+          <div class="cp-dot active" style="background:#111118" onclick="cpClick(this)" title="Preto"></div>
+          <div class="cp-dot" style="background:#4a3fa0" onclick="cpClick(this)" title="Violeta"></div>
+          <div class="cp-dot" style="background:#c0c0c0" onclick="cpClick(this)" title="Prata"></div>
+          <div class="cp-dot" style="background:#8B0000" onclick="cpClick(this)" title="Vinho"></div>
+        </div>
+        <p class="mp-desc">
+          O <strong>Apollo</strong> é o modelo para quem prioriza robustez mecânica e conforto superior. Com Cruise Control exclusivo no mercado brasileiro, garantindo condução estável e permanente em qualquer terreno.
+        </p>
+        <div class="mp-features">
+          <div class="mpf">
+            <div class="mpf-num">1</div>
+            <div class="mpf-body">
+              <strong>Cruise Control Exclusivo</strong>
+              <span>Único no mercado brasileiro — condução estável e permanente.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">2</div>
+            <div class="mpf-body">
+              <strong>Chassi Monobloco Eletrodialítico</strong>
+              <span>Aumenta a resistência à corrosão e a vida útil do veículo.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">3</div>
+            <div class="mpf-body">
+              <strong>Bancos Ergonômicos</strong>
+              <span>Forjados em peça única, com conforto real e acabamento de nível automotivo.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">4</div>
+            <div class="mpf-body">
+              <strong>Freios e Suspensão Reforçados</strong>
+              <span>Adaptados para uso em ambientes urbanos, condomínios e lazer.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">5</div>
+            <div class="mpf-body">
+              <strong>Bateria 72V Alto Rendimento</strong>
+              <span>Autonomia constante para operações diárias intensas.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mp-actions">
+          <button class="btn-p" onclick="goTo(3)">Ver em 360° 🔄</button>
+          <button class="btn-o" onclick="goTo(4)">Solicitar Proposta</button>
+        </div>
+      </div>
+
+      <!-- DCO -->
+      <div class="mp" id="mp-dco">
+        <div class="mp-hero">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="DACH DCO">
+          <div class="mp-hero-overlay"></div>
+          <div class="mp-hero-badge">🤖 Piloto Automático · Exclusivo</div>
+          <div class="mp-hero-label">
+            <div class="mp-name">DCO</div>
+            <div class="mp-tagline">O Futuro É Agora</div>
+          </div>
+        </div>
+        <div class="color-picker">
+          <span class="color-picker-label">Cor:</span>
+          <div class="cp-dot active" style="background:#111118" onclick="cpClick(this)" title="Preto"></div>
+          <div class="cp-dot" style="background:#003366" onclick="cpClick(this)" title="Azul"></div>
+          <div class="cp-dot" style="background:#4a3fa0" onclick="cpClick(this)" title="Violeta"></div>
+          <div class="cp-dot" style="background:#c0c0c0" onclick="cpClick(this)" title="Prata"></div>
+        </div>
+        <p class="mp-desc">
+          O <strong>DACH DCO</strong> representa o ápice da engenharia DACH: o <strong>primeiro e único carrinho elétrico com piloto automático disponível no mercado</strong>. Tecnologia automotiva de ponta em mobilidade sustentável.
+        </p>
+        <div class="mp-features">
+          <div class="mpf">
+            <div class="mpf-num">1</div>
+            <div class="mpf-body">
+              <strong>Piloto Automático</strong>
+              <span>Sistema de navegação autônoma integrado com DACH OS.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">2</div>
+            <div class="mpf-body">
+              <strong>Tela Central DACH OS</strong>
+              <span>Display automotivo de alto nível com interface completa e intuitiva.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">3</div>
+            <div class="mpf-body">
+              <strong>Volante Automotivo</strong>
+              <span>Qualidade e ergonomia de mercado automotivo de alto padrão.</span>
+            </div>
+          </div>
+          <div class="mpf">
+            <div class="mpf-num">4</div>
+            <div class="mpf-body">
+              <strong>Array de Sensores</strong>
+              <span>LIDAR + câmeras para navegação segura em qualquer ambiente.</span>
+            </div>
+          </div>
+        </div>
+        <div class="mp-actions">
+          <button class="btn-p" onclick="goTo(3)">Ver em 360° 🔄</button>
+          <button class="btn-o" onclick="goTo(4)">Solicitar Proposta</button>
+        </div>
+      </div>
+
+    </div><!-- /model-panels -->
+
+    <div class="pg-footer">
+      <div class="pg-footer-logo">DACH MOTORS</div>
+      <div class="pg-footer-tag">ENGENHARIA + PERFORMANCE</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 3 — VIEWER 3D ══════ -->
+<div class="page" id="p3">
+  <div class="viewer-wrap">
+    <div class="viewer-topbar">
+      <div class="eyebrow" style="margin-bottom:6px;">Visualizador Interativo</div>
+      <div class="h3" style="font-size:28px;">EXPLORAR EM 360°</div>
+      <div class="viewer-model-select">
+        <div class="vms-btn active" onclick="switchViewer('apollo',this)" id="vms-apollo">
+          <div class="vms-btn-name">APOLLO</div>
+          <div class="vms-btn-sub">Performance</div>
+        </div>
+        <div class="vms-btn" onclick="switchViewer('falcon',this)" id="vms-falcon">
+          <div class="vms-btn-name">FALCON</div>
+          <div class="vms-btn-sub">Solar</div>
+        </div>
+        <div class="vms-btn" onclick="switchViewer('dco',this)" id="vms-dco">
+          <div class="vms-btn-name">DCO</div>
+          <div class="vms-btn-sub">Autopilot</div>
+        </div>
+      </div>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="three-canvas"></canvas>
+      <div class="viewer-specs">
+        <div class="vs-model" id="vs-name">APOLLO</div>
+        <div class="vs-row"><span class="vs-lbl">Motor</span><span class="vs-val">72V AC</span></div>
+        <div class="vs-row"><span class="vs-lbl">Potência</span><span class="vs-val">6.3 kW</span></div>
+        <div class="vs-row"><span class="vs-lbl">Bateria</span><span class="vs-val">LiFePO4</span></div>
+        <div class="vs-row"><span class="vs-lbl">Capacidade</span><span class="vs-val">105 Ah</span></div>
+      </div>
+      <div class="viewer-colors" id="viewerColors">
+        <div class="vc-dot active" style="background:#141418" onclick="changeColor('#141418',this)" title="Preto"></div>
+        <div class="vc-dot" style="background:#4a3fa0" onclick="changeColor('#4a3fa0',this)" title="Violeta"></div>
+        <div class="vc-dot" style="background:#b0b0b0" onclick="changeColor('#b0b0b0',this)" title="Prata"></div>
+        <div class="vc-dot" style="background:#8B0000" onclick="changeColor('#8B0000',this)" title="Vinho"></div>
+        <div class="vc-dot" style="background:#003366" onclick="changeColor('#003366',this)" title="Azul"></div>
+      </div>
+      <div class="viewer-hud">
+        <span>↕️ Arraste</span>
+        <span>·</span>
+        <span>🔍 Zoom</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PAGE 4 — CONTATO ══════ -->
+<div class="page" id="p4">
+  <div class="page-content contato-wrap">
+    <div class="eyebrow">Seja um Parceiro</div>
+    <div class="h2">JUNTE-SE AO<br>FUTURO</div>
+
+    <p style="font-size:14px;color:var(--gray);line-height:1.8;margin:16px 0;font-weight:300;">
+      Na DACH Motors, entregamos mobilidade elétrica que <strong style="color:var(--wht)">funciona, dura e faz sentido no mundo real</strong>. Mercado em expansão, suporte dedicado e portfólio com diferenciação real.
+    </p>
+
+    <!-- Why partner -->
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-card-icon">📈</div>
+        <div class="why-card-title">EXPANSÃO</div>
+        <div class="why-card-desc">Mercado de mobilidade elétrica em acelerado crescimento no Brasil.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🏅</div>
+        <div class="why-card-title">MARGEM</div>
+        <div class="why-card-desc">Estrutura de margem saudável e diferenciação competitiva real.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">🔧</div>
+        <div class="why-card-title">SUPORTE</div>
+        <div class="why-card-desc">Suporte dedicado em todos os modelos e configurações.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">⚙️</div>
+        <div class="why-card-title">PORTFÓLIO</div>
+        <div class="why-card-desc">Pacote tecnológico padrão em todos os modelos da linha.</div>
+      </div>
+    </div>
+
+    <!-- Contact links -->
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.dachmotorsbrasil.com.br" target="_blank">
+        <div class="cl-icon">🌐</div>
+        <div>
+          <div class="cl-label">Website</div>
+          <div class="cl-value">dachmotorsbrasil.com.br</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://instagram.com/dach.motorsbrasil" target="_blank">
+        <div class="cl-icon">📸</div>
+        <div>
+          <div class="cl-label">Instagram</div>
+          <div class="cl-value">@dach.motorsbrasil</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Form -->
+    <div style="margin-top:28px;">
+      <div class="eyebrow">Formulário de Contato</div>
+      <div class="form-block">
+        <div class="form-group">
+          <label class="form-label">Nome Completo</label>
+          <input type="text" class="form-input" placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-mail</label>
+          <input type="email" class="form-input" placeholder="seu@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp</label>
+          <input type="tel" class="form-input" placeholder="(11) 99999-9999">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Modelo de Interesse</label>
+          <select class="form-select">
+            <option value="">Selecionar modelo</option>
+            <option>Falcon — Solar 2+2</option>
+            <option>Apollo — Alta Performance</option>
+            <option>DACH DCO — Piloto Automático</option>
+            <option>Toda a linha DACH</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mensagem</label>
+          <textarea class="form-textarea" placeholder="Conte sobre seu projeto ou interesse…"></textarea>
+        </div>
+        <button class="btn-p" style="width:100%;justify-content:center;padding:16px;" onclick="showToast('✅ Mensagem enviada! A DACH entrará em contato em breve.')">
+          Enviar Solicitação →
+        </button>
+      </div>
+    </div>
+
+    <div class="pg-footer">
+      <div class="pg-footer-logo">DACH MOTORS</div>
+      <div class="pg-footer-tag">© 2025 DACH Motors Brasil · Todos os direitos reservados</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /pages -->
+
+<!-- ─────────── BOTTOM TAB BAR ─────────── -->
+<div id="tabbar">
+  <div class="tab active" onclick="goTo(0)" id="tab0">
+    <div class="tab-icon">🏠</div>
+    <div class="tab-label">Início</div>
+  </div>
+  <div class="tab" onclick="goTo(1)" id="tab1">
+    <div class="tab-icon">🏭</div>
+    <div class="tab-label">Empresa</div>
+  </div>
+  <div class="tab" onclick="goTo(2)" id="tab2">
+    <div class="tab-icon">🚗</div>
+    <div class="tab-label">Modelos</div>
+  </div>
+  <div class="tab" onclick="goTo(3)" id="tab3">
+    <div class="tab-icon">🔄</div>
+    <div class="tab-label">360°</div>
+  </div>
+  <div class="tab" onclick="goTo(4)" id="tab4">
+    <div class="tab-icon">📞</div>
+    <div class="tab-label">Contato</div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ─────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────── */
+let current = 0;
+let threeReady = false;
+const pageEls = Array.from(document.querySelectorAll('.page'));
+const tabEls  = Array.from(document.querySelectorAll('.tab'));
+const diEls   = Array.from(document.querySelectorAll('.drawer-item'));
+
+function goTo(n) {
+  if (n === current) { closeDrawer(); return; }
+  const prev = current;
+  const dir  = n > prev ? 1 : -1;
+  // out
+  pageEls[prev].classList.remove('active');
+  pageEls[prev].classList.add('behind');
+  pageEls[prev].style.transform = dir > 0 ? 'translateX(-6%)' : 'translateX(100%)';
+  // in
+  pageEls[n].style.transform = dir > 0 ? 'translateX(100%)' : 'translateX(-6%)';
+  pageEls[n].classList.remove('behind');
+  // force reflow
+  void pageEls[n].offsetWidth;
+  pageEls[n].style.transform = '';
+  pageEls[n].classList.add('active');
+
+  current = n;
+  tabEls.forEach((t,i)  => t.classList.toggle('active', i===n));
+  diEls.forEach((d,i)   => d.classList.toggle('active', i===n));
+  closeDrawer();
+  if (n===3 && !threeReady) { setTimeout(initThree, 80); threeReady=true; }
+}
+
+/* ─────────────────────────────────────────
+   DRAWER
+───────────────────────────────────────── */
+let drawerOpen = false;
+const drawer  = document.getElementById('drawer');
+const menuBtn = document.getElementById('menuBtn');
+
+function toggleDrawer() {
+  drawerOpen = !drawerOpen;
+  drawer.classList.toggle('open', drawerOpen);
+  menuBtn.classList.toggle('open', drawerOpen);
+}
+function closeDrawer() {
+  drawerOpen = false;
+  drawer.classList.remove('open');
+  menuBtn.classList.remove('open');
+}
+function drawerGoTo(n) { goTo(n); }
+
+/* ─────────────────────────────────────────
+   MODEL SWITCHER
+───────────────────────────────────────── */
+function switchModel(name) {
+  document.querySelectorAll('.mp').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ms-tab').forEach(t => t.classList.remove('active'));
+  const el = document.getElementById('mp-'+name);
+  const tb = document.getElementById('mst-'+name);
+  if (el) el.classList.add('active');
+  if (tb) { tb.classList.add('active'); tb.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+}
+
+/* ─────────────────────────────────────────
+   COLOR PICKER (model cards)
+───────────────────────────────────────── */
+function cpClick(dot) {
+  con
