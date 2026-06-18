@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DACH Motors — Catálogo Digital Oficial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --blk:#05050a;--blk2:#0c0c14;--card:#111118;--bdr:#1c1c28;--bdr2:#2a2a3a;
+  --amb:#E8A020;--amb2:#F5B835;--amb3:rgba(232,160,32,.1);
+  --wht:#EDEDF5;--gr1:#888899;--gr2:#404055;
+  --fh:'Bebas Neue',sans-serif;--fb:'Inter',sans-serif;
+  --nav:58px;--bar:62px;--r:6px;
+}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wht);font-family:var(--fb);overflow:hidden;height:100dvh;height:100vh;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:var(--amb)}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(5,5,10,.95);backdrop-filter:blur(30px);border-bottom:1px solid var(--bdr)}
+.logo-svg{height:26px;width:auto}
+.nav-right{display:flex;align-items:center;gap:6px}
+.lang-btn{
+  background:var(--card);border:1px solid var(--bdr2);color:var(--wht);
+  border-radius:var(--r);font-family:var(--fb);font-size:11px;font-weight:700;
+  letter-spacing:1px;padding:8px 10px;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:5px;
+}
+.lang-btn:active{transform:scale(.95);border-color:var(--amb)}
+.nav-cta{background:var(--amb);color:#000;border:none;border-radius:var(--r);font-family:var(--fb);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:9px 14px;cursor:pointer;transition:all .2s}
+.nav-cta:active{transform:scale(.96);background:var(--amb2)}
+.ham{background:none;border:1px solid var(--bdr2);border-radius:var(--r);padding:10px 11px;cursor:pointer;display:flex;flex-direction:column;gap:5px;transition:border-color .25s}
+.ham span{display:block;width:18px;height:1.5px;background:var(--wht);border-radius:2px;transition:all .35s}
+.ham.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.ham.o span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* DRAWER */
+#drw{position:fixed;top:var(--nav);left:0;right:0;bottom:0;z-index:998;background:rgba(5,5,10,.98);backdrop-filter:blur(40px);transform:translateY(-105%);transition:transform .5s cubic-bezier(.77,0,.175,1);overflow-y:auto;padding:20px 16px 80px}
+#drw.o{transform:translateY(0)}
+.drw-section{margin-bottom:20px}
+.drw-label{font-size:9px;letter-spacing:4px;color:var(--amb);text-transform:uppercase;margin-bottom:10px;padding:0 4px}
+.drw-item{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);cursor:pointer;transition:all .2s;margin-bottom:6px}
+.drw-item:active,.drw-item.a{background:var(--amb3);border-color:var(--amb)}
+.drw-icon{width:38px;height:38px;background:var(--blk2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.drw-item.a .drw-icon{background:var(--amb3)}
+.drw-title{font-family:var(--fh);font-size:20px;letter-spacing:2px;line-height:1}
+.drw-sub{font-size:11px;color:var(--gr1);margin-top:2px}
+.drw-arr{color:var(--gr2);margin-left:auto;font-size:18px;transition:transform .2s}
+.drw-item.a .drw-arr{color:var(--amb);transform:translateX(3px)}
+.drw-model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.drw-mc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 6px;text-align:center;cursor:pointer;transition:all .2s;min-width:0}
+.drw-mc:active{border-color:var(--amb);background:var(--amb3);transform:scale(.96)}
+.drw-mc-icon{font-size:18px;margin-bottom:5px}
+.drw-mc-name{font-family:var(--fh);font-size:14px;letter-spacing:1.5px;display:block;margin-bottom:2px}
+.drw-mc-sub{font-size:9px;color:var(--gr1);letter-spacing:.3px}
+.drw-social{display:flex;gap:8px;margin-top:6px}
+.drw-soc-btn{flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:12px;text-align:center;cursor:pointer;transition:all .2s;font-size:11px;color:var(--wht);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:4px}
+.drw-soc-btn:active{border-color:var(--amb);background:var(--amb3)}
+
+/* PAGES */
+#pages{position:fixed;top:var(--nav);left:0;right:0;bottom:var(--bar);overflow:hidden}
+.page{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;transform:translateX(100%);transition:transform .55s cubic-bezier(.77,0,.175,1);will-change:transform;scroll-behavior:smooth}
+.page.active{transform:translateX(0)}
+
+/* TABBAR */
+#bar{position:fixed;bottom:0;left:0;right:0;z-index:997;height:var(--bar);background:rgba(5,5,10,.97);backdrop-filter:blur(30px);border-top:1px solid var(--bdr);display:flex;align-items:stretch}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:8px 0;transition:all .2s;position:relative}
+.tab::after{content:'';position:absolute;top:0;left:50%;right:50%;height:2px;background:var(--amb);border-radius:0 0 2px 2px;transition:all .3s}
+.tab.a::after{left:15%;right:15%}
+.t-icon{font-size:19px;transition:transform .2s}
+.tab.a .t-icon{transform:translateY(-2px)}
+.t-lbl{font-size:9px;letter-spacing:.8px;color:var(--gr1);text-transform:uppercase;font-weight:500}
+.tab.a .t-lbl{color:var(--amb)}
+
+/* WHATSAPP FLOATING BUTTON */
+#wa-float{
+  position:fixed;right:16px;bottom:calc(var(--bar) + 14px);z-index:1000;
+  width:54px;height:54px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.5);
+  cursor:pointer;transition:all .25s;
+  border:2px solid rgba(255,255,255,.2);
+  animation:waPulse 2.5s ease-in-out infinite;
+}
+#wa-float:active{transform:scale(.9)}
+#wa-float svg{width:30px;height:30px}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 30px rgba(37,211,102,.8),0 0 0 8px rgba(37,211,102,.15)}}
+.wa-tooltip{
+  position:absolute;right:64px;top:50%;transform:translateY(-50%);
+  background:#1a1a1a;color:#fff;padding:8px 14px;border-radius:8px;
+  font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;
+  transition:opacity .2s;font-weight:600;
+}
+#wa-float:hover .wa-tooltip{opacity:1}
+
+/* UTILS */
+.pc{padding-bottom:24px}
+.ey{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:4px;color:var(--amb);text-transform:uppercase;margin-bottom:10px}
+.ey::before{content:'';width:24px;height:1px;background:var(--amb);flex-shrink:0}
+.H1{font-family:var(--fh);font-size:clamp(50px,13vw,92px);line-height:.88;letter-spacing:2px}
+.H2{font-family:var(--fh);font-size:clamp(34px,8.5vw,60px);line-height:.92;letter-spacing:1px}
+.H3{font-family:var(--fh);font-size:clamp(24px,6vw,42px);line-height:.95;letter-spacing:1px}
+.sec{padding:32px 18px}
+.dvd{width:100%;height:1px;background:var(--bdr);margin:24px 0}
+.bp{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--amb);color:#000;border:none;border-radius:var(--r);font-family:var(--fb);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:14px 22px;cursor:pointer;transition:all .2s;width:100%}
+.bp:active{transform:scale(.97);background:var(--amb2)}
+.bo{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--wht);border:1px solid var(--bdr2);border-radius:var(--r);font-family:var(--fb);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 22px;cursor:pointer;transition:all .2s;width:100%}
+.bo:active{border-color:var(--amb);color:var(--amb);transform:scale(.97)}
+
+/* LIGHTBOX */
+#lb{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.96);backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+#lb.o{display:flex}
+#lb-img{max-width:100%;max-height:75vh;object-fit:contain;border-radius:var(--r)}
+#lb-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:18px;color:var(--wht);display:flex;align-items:center;justify-content:center}
+#lb-cap{margin-top:16px;font-size:12px;color:var(--gr1);letter-spacing:1px;text-align:center}
+
+/* TOAST */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--amb);color:#000;font-size:13px;font-weight:700;letter-spacing:.5px;padding:12px 24px;border-radius:40px;opacity:0;transition:all .35s;z-index:3000;white-space:nowrap;pointer-events:none;max-width:90vw;text-align:center}
+#toast.o{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ════ HERO ════ */
+.hero{position:relative;height:calc(100dvh - var(--nav) - var(--bar));height:calc(100vh - var(--nav) - var(--bar));min-height:460px;overflow:hidden;display:flex;align-items:flex-end}
+.hero-media{position:absolute;inset:0}
+.hero-media img{filter:brightness(.4) saturate(1.3)}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to top,var(--blk) 0%,rgba(5,5,10,.7) 45%,transparent 80%),linear-gradient(to right,rgba(5,5,10,.6) 0%,transparent 55%)}
+.hero-grid-anim{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(232,160,32,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(232,160,32,.03) 1px,transparent 1px);background-size:48px 48px;animation:gridScroll 25s linear infinite}
+@keyframes gridScroll{from{background-position:0 0}to{background-position:48px 48px}}
+.hero-cnt{position:relative;z-index:2;padding:24px 18px 26px;width:100%}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(232,160,32,.15);border:1px solid rgba(232,160,32,.3);border-radius:40px;padding:6px 14px;margin-bottom:16px;font-size:11px;letter-spacing:2px;color:var(--amb);text-transform:uppercase;animation:fuv .7s ease both}
+.hero-sub{font-size:14px;color:var(--gr1);line-height:1.75;margin:14px 0 20px;font-weight:300;animation:fuv .7s .2s ease both;max-width:400px}
+.hero-btns{display:flex;gap:10px;margin-bottom:20px;animation:fuv .7s .3s ease both}
+.hero-btns .bp,.hero-btns .bo{width:auto;flex:1}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;animation:fuv .7s .4s ease both}
+.hs{background:rgba(10,10,18,.88);backdrop-filter:blur(20px);border:1px solid var(--bdr);padding:11px 8px;text-align:center}
+.hs:first-child{border-radius:var(--r) 0 0 var(--r)}
+.hs:last-child{border-radius:0 var(--r) var(--r) 0}
+.hs-v{font-family:var(--fh);font-size:24px;color:var(--amb);line-height:1}
+.hs-l{font-size:8.5px;letter-spacing:1.5px;color:var(--gr1);text-transform:uppercase;margin-top:2px}
+@keyframes fuv{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* Trust badges */
+.trust-row{display:flex;gap:8px;padding:12px 18px;margin-top:0;margin-bottom:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+.trust-row::-webkit-scrollbar{display:none}
+.trust-badge{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--bdr);border-radius:40px;padding:8px 14px;font-size:10px;color:var(--gr1);letter-spacing:.5px;flex-shrink:0;white-space:nowrap}
+.trust-badge b{color:var(--amb)}
+
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.feat{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:18px 14px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.feat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--amb3),transparent);opacity:0;transition:opacity .3s}
+.feat:active{transform:scale(.97)}
+.feat:active::before{opacity:1}
+.feat-ic{font-size:26px;margin-bottom:10px}
+.feat-t{font-family:var(--fh);font-size:18px;letter-spacing:1px;margin-bottom:4px}
+.feat-d{font-size:11px;color:var(--gr1);line-height:1.6}
+
+.gal-strip{display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;scrollbar-width:none}
+.gal-strip::-webkit-scrollbar{display:none}
+.gal-thumb{flex-shrink:0;width:150px;height:105px;border-radius:var(--r);overflow:hidden;cursor:pointer;border:1px solid var(--bdr);transition:all .2s;position:relative}
+.gal-thumb:active{transform:scale(.95);border-color:var(--amb)}
+.gal-thumb img{filter:brightness(.75) saturate(1.2)}
+.gal-thumb-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));padding:8px 8px 6px;font-size:9px;letter-spacing:1px;color:var(--wht);text-transform:uppercase}
+
+.mc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s;display:flex;margin-bottom:8px}
+.mc:active{transform:scale(.98);border-color:var(--amb)}
+.mc-img{width:115px;height:auto;min-height:110px;flex-shrink:0;position:relative;overflow:hidden;background:var(--blk2)}
+.mc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,rgba(17,17,24,.7))}
+.mc-body{flex:1;padding:14px}
+.mc-ey{font-size:9px;letter-spacing:2px;color:var(--amb);text-transform:uppercase;margin-bottom:3px}
+.mc-name{font-family:var(--fh);font-size:27px;letter-spacing:2px;line-height:1;margin-bottom:5px}
+.mc-d{font-size:11px;color:var(--gr1);line-height:1.5}
+.mc-arr{display:flex;align-items:center;gap:4px;font-size:10px;letter-spacing:2px;color:var(--amb);font-weight:700;margin-top:10px;text-transform:uppercase}
+
+/* Testimonials */
+.test-card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:18px;margin-bottom:8px}
+.test-stars{color:var(--amb);font-size:14px;margin-bottom:8px;letter-spacing:2px}
+.test-txt{font-size:13px;color:var(--gr1);line-height:1.6;font-style:italic;margin-bottom:10px}
+.test-name{font-size:11px;color:var(--wht);font-weight:700}
+.test-role{font-size:10px;color:var(--gr2)}
+
+/* ════ EMPRESA ════ */
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sp{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:18px 14px;position:relative;overflow:hidden}
+.sp::after{content:attr(data-n);position:absolute;bottom:-6px;right:8px;font-family:var(--fh);font-size:54px;color:rgba(232,160,32,.06);line-height:1;pointer-events:none}
+.sp-v{font-family:var(--fh);font-size:28px;color:var(--amb);line-height:1}
+.sp-u{font-size:11px;color:var(--gr1);margin:2px 0 6px}
+.sp-l{font-size:10px;color:var(--gr2);letter-spacing:1px;text-transform:uppercase}
+
+.pillar{background:var(--card);border:1px solid var(--bdr);border-left:3px solid var(--amb);border-radius:var(--r);padding:16px;display:flex;gap:14px;align-items:flex-start;margin-bottom:8px;transition:all .2s}
+.pillar:active{background:var(--amb3)}
+.p-ic{font-size:22px;flex-shrink:0}
+.p-t{font-family:var(--fh);font-size:17px;letter-spacing:1px;margin-bottom:4px}
+.p-d{font-size:12px;color:var(--gr1);line-height:1.65}
+
+.diag{background:var(--blk2);border:1px solid var(--bdr);border-radius:var(--r);padding:18px 14px;margin:20px 0}
+.diag-t{font-family:var(--fh);font-size:15px;letter-spacing:2px;color:var(--amb);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+
+.mkt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.mkt{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:14px 6px;text-align:center;transition:all .2s;cursor:default}
+.mkt:active{border-color:var(--amb);background:var(--amb3)}
+.mkt-ic{font-size:18px;margin-bottom:4px}
+.mkt-t{font-family:var(--fh);font-size:12px;letter-spacing:1px;margin-bottom:2px}
+.mkt-d{font-size:9px;color:var(--gr1);line-height:1.3}
+
+.timeline{display:flex;flex-direction:column;gap:0;margin:16px 0}
+.tl-item{display:flex;gap:14px;padding-bottom:20px;position:relative}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:11px;top:24px;bottom:0;width:1px;background:var(--bdr)}
+.tl-dot{width:24px;height:24px;border-radius:50%;background:var(--amb3);border:2px solid var(--amb);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;color:var(--amb);font-weight:700}
+.tl-y{font-family:var(--fh);font-size:14px;color:var(--amb);letter-spacing:1px}
+.tl-t{font-size:12px;color:var(--wht);font-weight:600;margin:2px 0}
+.tl-d{font-size:11px;color:var(--gr1);line-height:1.5}
+
+/* ════ MODELOS ════ */
+.ms{display:flex;gap:6px;padding:16px 18px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0}
+.ms::-webkit-scrollbar{display:none}
+.mst{flex-shrink:0;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 18px;cursor:pointer;transition:all .25s}
+.mst.a{background:var(--amb3);border-color:var(--amb)}
+.mst-n{font-family:var(--fh);font-size:18px;letter-spacing:2px;line-height:1}
+.mst.a .mst-n{color:var(--amb)}
+.mst-s{font-size:9px;color:var(--gr1);letter-spacing:1px;text-transform:uppercase;margin-top:1px}
+
+.mp{display:none;padding:14px 18px 20px;animation:fuv .35s ease}
+.mp.a{display:block}
+
+.mp-hero{width:100%;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;position:relative;margin-bottom:14px;background:var(--blk2)}
+.mp-hero img{filter:brightness(.7) saturate(1.3)}
+.mp-hero-g{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,10,.9) 0%,transparent 55%)}
+.mp-badge{position:absolute;top:12px;left:0;background:rgba(5,5,10,.88);border:1px solid var(--bdr2);border-left:3px solid var(--amb);padding:6px 14px;font-size:9px;letter-spacing:2px;color:var(--amb);text-transform:uppercase;font-weight:700;backdrop-filter:blur(10px);border-radius:0 var(--r) var(--r) 0}
+.mp-bottom{position:absolute;bottom:14px;left:16px;right:16px}
+.mp-n{font-family:var(--fh);font-size:46px;letter-spacing:3px;line-height:.9}
+.mp-tg{font-size:11px;letter-spacing:3px;color:var(--amb);text-transform:uppercase;margin-top:3px}
+
+.mp-desc{font-size:13px;color:var(--gr1);line-height:1.8;margin:0 0 16px;font-weight:300;padding:14px;border-left:2px solid var(--bdr2);background:var(--card);border-radius:0 var(--r) var(--r) 0}
+
+.cpk{display:flex;align-items:center;gap:10px;margin:0 0 16px;flex-wrap:wrap}
+.cpk-l{font-size:9px;letter-spacing:2px;color:var(--gr1);text-transform:uppercase}
+.cd{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s;flex-shrink:0;position:relative}
+.cd.a,.cd:active{border-color:var(--wht);transform:scale(1.2)}
+.cd-name{position:absolute;top:32px;left:50%;transform:translateX(-50%);font-size:8px;color:var(--gr2);white-space:nowrap;opacity:0;transition:opacity .2s}
+.cd:hover .cd-name{opacity:1}
+
+.spec-mini{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:14px}
+.sm-item{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 4px;text-align:center}
+.sm-v{font-family:var(--fh);font-size:15px;color:var(--amb);line-height:1}
+.sm-l{font-size:7px;color:var(--gr1);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+.feats{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fi{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:13px 14px;display:flex;gap:12px;align-items:flex-start;transition:all .2s}
+.fi:active{background:var(--amb3);border-color:var(--amb)}
+.fi-n{font-family:var(--fh);font-size:24px;color:var(--amb);line-height:1;flex-shrink:0;width:24px}
+.fi-t{font-size:12px;color:var(--wht);font-weight:600;margin-bottom:2px}
+.fi-d{font-size:11px;color:var(--gr1);line-height:1.5}
+
+.mg{display:flex;gap:6px;overflow-x:auto;padding:0 0 8px;scrollbar-width:none}
+.mg::-webkit-scrollbar{display:none}
+.mg-t{flex-shrink:0;width:110px;height:80px;border-radius:var(--r);overflow:hidden;cursor:pointer;border:1px solid var(--bdr);transition:all .2s;position:relative;display:block}
+.mg-t:active{border-color:var(--amb);transform:scale(.95)}
+.mg-t img{filter:brightness(.65) saturate(1.2);width:100%;height:100%;object-fit:cover}
+
+.mp-btns{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:11px;margin:16px 0}
+.compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:var(--r);border:1px solid var(--bdr)}
+.compare-wrap::-webkit-scrollbar{display:none}
+.compare-table th,.compare-table td{padding:10px 10px;text-align:center;border-bottom:1px solid var(--bdr);white-space:nowrap}
+.compare-table th{font-family:var(--fh);font-size:14px;letter-spacing:1px;color:var(--amb);background:var(--card)}
+.compare-table td:first-child,.compare-table th:first-child{text-align:left;color:var(--gr1);min-width:90px}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:rgba(232,160,32,.03)}
+
+/* ════ 360 ════ */
+.v3d{height:100%;display:flex;flex-direction:column}
+.v3d-top{padding:14px 18px;flex-shrink:0;background:var(--blk2);border-bottom:1px solid var(--bdr)}
+.v3d-tabs{display:flex;gap:5px;margin-top:10px}
+.v3t{flex:1;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:9px 6px;cursor:pointer;text-align:center;transition:all .2s}
+.v3t.a{background:var(--amb3);border-color:var(--amb)}
+.v3t-n{font-family:var(--fh);font-size:15px;letter-spacing:1.5px}
+.v3t.a .v3t-n{color:var(--amb)}
+.v3t-s{font-size:8px;color:var(--gr1);text-transform:uppercase;letter-spacing:.8px}
+.canvas-w{flex:1;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 50% at 50% 40%,rgba(232,160,32,.07),var(--blk));min-height:0}
+#c3d{display:block;width:100%;height:100%;touch-action:none}
+.v3-info{position:absolute;left:10px;top:10px;background:rgba(5,5,10,.82);border:1px solid var(--bdr);border-left:3px solid var(--amb);border-radius:0 var(--r) var(--r) 0;padding:12px 14px;backdrop-filter:blur(20px);min-width:130px}
+.v3-model{font-family:var(--fh);font-size:22px;letter-spacing:2px;margin-bottom:8px}
+.v3-row{display:flex;justify-content:space-between;gap:14px;padding:4px 0;border-bottom:1px solid var(--bdr);font-size:10px}
+.v3-row:last-child{border-bottom:none}
+.v3-lbl{color:var(--gr1)}.v3-val{color:var(--wht);font-weight:600}
+.v3-colors{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;background:rgba(5,5,10,.8);border:1px solid var(--bdr);border-radius:var(--r);padding:10px 8px;backdrop-filter:blur(20px)}
+.vc{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s}
+.vc.a,.vc:active{border-color:var(--wht);transform:scale(1.15)}
+.v3-hud{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(5,5,10,.82);border:1px solid var(--bdr);border-radius:40px;padding:7px 16px;font-size:10px;color:var(--gr1);letter-spacing:.5px;backdrop-filter:blur(20px);display:flex;gap:8px;white-space:nowrap;align-items:center}
+.v3-reset{position:absolute;top:10px;right:10px;background:rgba(5,5,10,.82);border:1px solid var(--bdr);border-radius:var(--r);padding:8px 12px;font-size:10px;color:var(--gr1);cursor:pointer;letter-spacing:1px}
+
+/* ════ CONTATO ════ */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+.wc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:16px 14px;transition:all .2s}
+.wc:active{border-color:var(--amb);background:var(--amb3)}
+.wc-ic{font-size:22px;margin-bottom:7px}
+.wc-t{font-family:var(--fh);font-size:14px;letter-spacing:1px;margin-bottom:3px}
+.wc-d{font-size:11px;color:var(--gr1);line-height:1.5}
+
+.cl{display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:8px;cursor:pointer;transition:all .2s;text-decoration:none;color:inherit}
+.cl:active{border-color:var(--amb);background:var(--amb3)}
+.cl-ic{width:40px;height:40px;background:var(--amb3);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cl-l{font-size:9px;letter-spacing:2px;color:var(--amb);text-transform:uppercase;margin-bottom:3px}
+.cl-v{font-size:13px;color:var(--wht);font-weight:500}
+
+.fg{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.fl{font-size:9px;letter-spacing:2px;color:var(--gr1);text-transform:uppercase;margin-bottom:5px;display:block}
+.fi2,.fsl,.fta{width:100%;background:var(--card);border:1px solid var(--bdr);color:var(--wht);font-family:var(--fb);font-size:14px;padding:13px 14px;border-radius:var(--r);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fi2:focus,.fsl:focus,.fta:focus{border-color:var(--amb)}
+.fsl{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%23888899' d='M5 7L0 2h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+option{background:var(--card)}
+.fta{resize:vertical;min-height:80px}
+
+.faq-item{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:6px;overflow:hidden}
+.faq-q{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:13px;font-weight:600}
+.faq-arrow{color:var(--amb);transition:transform .25s;font-size:14px}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{padding:0 16px;max-height:0;overflow:hidden;transition:all .3s;font-size:12px;color:var(--gr1);line-height:1.6}
+.faq-item.open .faq-a{padding:0 16px 16px;max-height:200px}
+
+.pf{padding:24px 18px;border-top:1px solid var(--bdr);text-align:center;margin-top:24px}
+.pf-logo{font-family:var(--fh);font-size:20px;letter-spacing:5px;color:var(--gr2);margin-bottom:4px}
+.pf-tag{font-size:9px;letter-spacing:2px;color:var(--gr2);line-height:1.6}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:360px){
+  .H1{font-size:44px}
+  .H2{font-size:30px}
+  .H3{font-size:22px}
+  .spec-mini{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .why{grid-template-columns:1fr 1fr}
+  .spec-grid{grid-template-columns:1fr 1fr}
+  .v3d-tabs{flex-wrap:wrap}
+  .v3t{flex:none;width:calc(33% - 4px)}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <button onclick="gt(0)" style="background:none;border:none;cursor:pointer;padding:0">
+    <svg class="logo-svg" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text y="32" font-family="'Bebas Neue',sans-serif" font-size="36" letter-spacing="3" fill="#EDEDF5">DACH</text>
+      <text x="106" y="32" font-family="'Bebas Neue',sans-serif" font-size="12" letter-spacing="2" fill="#E8A020">MOTORS</text>
+      <line x1="0" y1="35" x2="160" y2="35" stroke="rgba(232,160,32,.35)" stroke-width="1"/>
+    </svg>
+  </button>
+  <div class="nav-right">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">🌐 <span id="langLbl">EN</span></button>
+    <button class="nav-cta" data-i18n="nav.partner" onclick="gt(4)">Parceiro</button>
+    <button class="ham" id="hbtn" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div id="drw">
+  <div class="drw-section">
+    <div class="drw-label" data-i18n="drw.nav">Navegação</div>
+    <div class="drw-item a" onclick="dgt(0)" id="di0"><div class="drw-icon">🏠</div><div><div class="drw-title" data-i18n="drw.home">INÍCIO</div><div class="drw-sub" data-i18n="drw.home.sub">Apresentação e destaques</div></div><div class="drw-arr">›</div></div>
+    <div class="drw-item" onclick="dgt(1)" id="di1"><div class="drw-icon">🏭</div><div><div class="drw-title" data-i18n="drw.company">EMPRESA</div><div class="drw-sub" data-i18n="drw.company.sub">Tecnologia e missão</div></div><div class="drw-arr">›</div></div>
+    <div class="drw-item" onclick="dgt(2)" id="di2"><div class="drw-icon">🚗</div><div><div class="drw-title" data-i18n="drw.models">MODELOS</div><div class="drw-sub">Falcon · Apollo · DCO</div></div><div class="drw-arr">›</div></div>
+    <div class="drw-item" onclick="dgt(3)" id="di3"><div class="drw-icon">🔄</div><div><div class="drw-title" data-i18n="drw.viewer">VIEWER 360°</div><div class="drw-sub" data-i18n="drw.viewer.sub">Modelo 3D interativo</div></div><div class="drw-arr">›</div></div>
+    <div class="drw-item" onclick="dgt(4)" id="di4"><div class="drw-icon">📞</div><div><div class="drw-title" data-i18n="drw.contact">CONTATO</div><div class="drw-sub" data-i18n="drw.contact.sub">Seja um parceiro DACH</div></div><div class="drw-arr">›</div></div>
+  </div>
+  <div class="drw-section">
+    <div class="drw-label" data-i18n="drw.direct">Ir direto ao modelo</div>
+    <div class="drw-model-grid">
+      <div class="drw-mc" onclick="dgt(2);setTimeout(()=>sm('falcon'),350)"><div class="drw-mc-icon">☀️</div><span class="drw-mc-name">FALCON</span><div class="drw-mc-sub">Solar 2+2</div></div>
+      <div class="drw-mc" onclick="dgt(2);setTimeout(()=>sm('apollo'),350)"><div class="drw-mc-icon">🏆</div><span class="drw-mc-name">APOLLO</span><div class="drw-mc-sub" data-i18n="drw.performance">Performance</div></div>
+      <div class="drw-mc" onclick="dgt(2);setTimeout(()=>sm('dco'),350)"><div class="drw-mc-icon">🤖</div><span class="drw-mc-name">DCO</span><div class="drw-mc-sub">Autopilot</div></div>
+    </div>
+  </div>
+  <div class="drw-section">
+    <div class="drw-label" data-i18n="drw.follow">Siga a DACH</div>
+    <div class="drw-social">
+      <a class="drw-soc-btn" href="https://instagram.com/dach.motorsbrasil" target="_blank">📸 Instagram</a>
+      <a class="drw-soc-btn" href="https://wa.me/5511999999999" target="_blank">💬 WhatsApp</a>
+      <a class="drw-soc-btn" href="https://www.dachmotorsbrasil.com.br" target="_blank">🌐 Site</a>
+    </div>
+  </div>
+</div>
+
+<div id="pages">
+
+<!-- ══ P0 HOME ══ -->
+<div class="page active" id="p0">
+<div class="pc">
+
+<div class="hero">
+  <div class="hero-media"><img src="https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=1200&q=80&auto=format&fit=crop" alt="DACH Motors"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-grid-anim"></div>
+  <div class="hero-cnt">
+    <div class="hero-pill" data-i18n="hero.pill">⚡ Mobilidade Elétrica Premium</div>
+    <h1 class="H1 hero-title" style="animation:fuv .7s .1s ease both"><span data-i18n="hero.t1">DESCUBRA</span><br><span data-i18n="hero.t2">O FUTURO DO</span><br><em style="color:var(--amb);font-style:normal" data-i18n="hero.t3">TRANSPORTE</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">DACH Motors redefine a mobilidade elétrica com motor AC 72V, bateria LiFePO4 e experiência de condução acima do padrão do segmento.</p>
+    <div class="hero-btns">
+      <button class="bp" data-i18n="hero.btn1" onclick="gt(2)">Ver Modelos →</button>
+      <button class="bo" onclick="gt(3)">360° 🔄</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hs-v">72V</div><div class="hs-l" data-i18n="hero.stat1">Motor AC</div></div>
+      <div class="hs"><div class="hs-v">6.3kW</div><div class="hs-l" data-i18n="hero.stat2">Potência</div></div>
+      <div class="hs"><div class="hs-v">105Ah</div><div class="hs-l">LiFePO4</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust-row">
+  <div class="trust-badge">🏆 <b data-i18n="trust.b1">100%</b> <span data-i18n="trust.b1t">Elétrico</span></div>
+  <div class="trust-badge">⚡ <b>72V</b> <span data-i18n="trust.b2t">AC System</span></div>
+  <div class="trust-badge">🛡️ <b data-i18n="trust.b3">Garantia</b> <span data-i18n="trust.b3t">de fábrica</span></div>
+  <div class="trust-badge">🌍 <b data-i18n="trust.b4">Brasil</b></div>
+</div>
+
+<div class="sec" style="padding-top:0">
+  <div class="ey" data-i18n="diff.ey">Diferenciais</div>
+  <div class="H3" style="margin-bottom:20px"><span data-i18n="diff.t1">ENGENHARIA +</span><br><span data-i18n="diff.t2">PERFORMANCE</span></div>
+  <div class="feat-grid">
+    <div class="feat" onclick="gt(1)"><div class="feat-ic">⚡</div><div class="feat-t" data-i18n="diff.f1">INOVAÇÃO</div><div class="feat-d" data-i18n="diff.f1d">Motor AC 72V com controlador 350A e bateria LiFePO4 de alta durabilidade.</div></div>
+    <div class="feat" onclick="gt(1)"><div class="feat-ic">🔄</div><div class="feat-t" data-i18n="diff.f2">VERSATIL.</div><div class="feat-d" data-i18n="diff.f2d">Residencial, comercial e lazer — portfólio completo para cada aplicação.</div></div>
+    <div class="feat" onclick="gt(1)"><div class="feat-ic">🌿</div><div class="feat-t" data-i18n="diff.f3">SOLAR</div><div class="feat-d" data-i18n="diff.f3d">Energia solar integrada ao produto — não é acessório, é propósito.</div></div>
+    <div class="feat" onclick="gt(4)"><div class="feat-ic">🤝</div><div class="feat-t" data-i18n="diff.f4">PARCERIA</div><div class="feat-d" data-i18n="diff.f4d">Mercado em expansão, margem saudável e suporte dedicado.</div></div>
+  </div>
+</div>
+
+<div style="padding:0 0 4px">
+  <div style="padding:0 18px;margin-bottom:14px">
+    <div class="ey" data-i18n="gal.ey">Galeria</div>
+    <div class="H3"><span data-i18n="gal.t1">VEJA NOSSOS</span><br><span data-i18n="gal.t2">CARRINHOS</span></div>
+  </div>
+  <div class="gal-strip">
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1000&q=85','DACH Falcon — Solar 2+2')"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=320&q=75" alt="Falcon"><div class="gal-thumb-cap">Falcon</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=85','DACH Apollo — Alta Performance')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=320&q=75" alt="Apollo"><div class="gal-thumb-cap">Apollo</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1000&q=85','DACH — Lifestyle Resort')"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=320&q=75" alt="Lifestyle"><div class="gal-thumb-cap" data-i18n="gal.lifestyle">Lifestyle</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=1000&q=85','DACH — Vista Aérea Condomínio')"><img src="https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=320&q=75" alt="Cond"><div class="gal-thumb-cap" data-i18n="gal.condo">Condomínio</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85','DACH DCO — Tecnologia Embarcada')"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=320&q=75" alt="Tech"><div class="gal-thumb-cap" data-i18n="gal.tech">Tecnologia</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=1000&q=85','DACH — Resort de Alto Padrão')"><img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=320&q=75" alt="Resort"><div class="gal-thumb-cap">Resort</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1542362567-b07e54358753?w=1000&q=85','DACH — Aplicação Comercial')"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=320&q=75" alt="Comercial"><div class="gal-thumb-cap" data-i18n="gal.commercial">Comercial</div></div>
+    <div class="gal-thumb" onclick="lb('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1000&q=85','DACH — Conforto e Design')"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=320&q=75" alt="Design"><div class="gal-thumb-cap" data-i18n="gal.design">Design</div></div>
+  </div>
+</div>
+
+<div class="sec" style="padding-top:28px">
+  <div class="ey" data-i18n="port.ey">Portfolio</div>
+  <div class="H3" style="margin-bottom:16px" data-i18n="port.t">NOSSOS MODELOS</div>
+  <div class="mc" onclick="gt(2);setTimeout(()=>sm('falcon'),350)">
+    <div class="mc-img"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=300&q=70" alt="Falcon"></div>
+    <div class="mc-body"><div class="mc-ey" data-i18n="mc.falcon.tag">☀️ Solar · 2+2 Lugares</div><div class="mc-name">FALCON</div><div class="mc-d" data-i18n="mc.falcon.d">Para quem busca inovação, energia solar integrada e conforto familiar.</div><div class="mc-arr" data-i18n="mc.see">Ver modelo ›</div></div>
+  </div>
+  <div class="mc" onclick="gt(2);setTimeout(()=>sm('apollo'),350)">
+    <div class="mc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70" alt="Apollo"></div>
+    <div class="mc-body"><div class="mc-ey" data-i18n="mc.apollo.tag">🏆 Alta Performance</div><div class="mc-name">APOLLO</div><div class="mc-d" data-i18n="mc.apollo.d">Robustez mecânica e Cruise Control exclusivo no mercado brasileiro.</div><div class="mc-arr" data-i18n="mc.see">Ver modelo ›</div></div>
+  </div>
+  <div class="mc" onclick="gt(2);setTimeout(()=>sm('dco'),350)">
+    <div class="mc-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&q=70" alt="DCO"></div>
+    <div class="mc-body"><div class="mc-ey" data-i18n="mc.dco.tag">🤖 Piloto Automático</div><div class="mc-name">DCO</div><div class="mc-d" data-i18n="mc.dco.d">O primeiro e único carrinho elétrico com piloto automático no mercado.</div><div class="mc-arr" data-i18n="mc.see">Ver modelo ›</div></div>
+  </div>
+</div>
+
+<div class="sec" style="padding-top:0">
+  <div class="ey" data-i18n="test.ey">Depoimentos</div>
+  <div class="H3" style="margin-bottom:16px" data-i18n="test.t">QUEM USA, RECOMENDA</div>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <div class="test-txt" data-i18n="test.1">"O Apollo mudou completamente a mobilidade do nosso condomínio. Robusto, silencioso e a manutenção é mínima."</div>
+    <div class="test-name" data-i18n="test.1name">Roberto M.</div>
+    <div class="test-role" data-i18n="test.1role">Síndico — Condomínio Boa Vista</div>
+  </div>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <div class="test-txt" data-i18n="test.2">"A energia solar do Falcon realmente funciona. Economizamos muito em recarga e os hóspedes adoram."</div>
+    <div class="test-name" data-i18n="test.2name">Camila S.</div>
+    <div class="test-role" data-i18n="test.2role">Gerente — Resort Premium</div>
+  </div>
+</div>
+
+<div class="pf"><div class="pf-logo">DACH MOTORS</div><div class="pf-tag" data-i18n="pf.tag1">DESCUBRA O FUTURO DO TRANSPORTE</div></div>
+</div>
+</div>
+
+<!-- ══ P1 EMPRESA ══ -->
+<div class="page" id="p1">
+<div class="pc">
+<div class="sec">
+  <div class="ey" data-i18n="emp.ey">Sobre a DACH Motors</div>
+  <div class="H2" style="margin-bottom:18px"><span data-i18n="emp.t1">REDEFININDO</span><br><span data-i18n="emp.t2">A MOBILIDADE</span></div>
+  <p style="font-size:14px;color:var(--gr1);line-height:1.8;font-weight:300;margin-bottom:12px"><span data-i18n="emp.p1a">A</span> <strong style="color:var(--wht)">DACH Motors</strong> <span data-i18n="emp.p1b">atua de forma estratégica na construção de um ecossistema de</span> <strong style="color:var(--wht)" data-i18n="emp.p1c">mobilidade sustentável</strong><span data-i18n="emp.p1d">, com margem saudável, diferenciação competitiva e portfólio alinhado às demandas do mercado brasileiro.</span></p>
+  <p style="font-size:14px;color:var(--gr1);line-height:1.8;font-weight:300" data-i18n="emp.p2">Atendemos desde aplicações residenciais e urbanas até operações de lazer e uso comercial — entregando mobilidade elétrica que funciona, dura e faz sentido no mundo real.</p>
+
+  <div style="margin:20px 0;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;cursor:pointer" onclick="lb('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1100&q=85','DACH Motors — Ecossistema de Mobilidade Sustentável')">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" style="filter:brightness(.65) saturate(1.2)" alt="empresa">
+  </div>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="emp.tech">Especificações Técnicas</div>
+  <div class="spec-grid" style="margin-bottom:20px">
+    <div class="sp" data-n="01"><div class="sp-v">72V AC</div><div class="sp-u" data-i18n="sp.motor">Motor Elétrico</div><div class="sp-l" data-i18n="sp.motor.l">6.3 kW de Potência</div></div>
+    <div class="sp" data-n="02"><div class="sp-v">350A</div><div class="sp-u" data-i18n="sp.ctrl">Controlador AC</div><div class="sp-l" data-i18n="sp.ctrl.l">Sistema 72V Inteligente</div></div>
+    <div class="sp" data-n="03"><div class="sp-v">105Ah</div><div class="sp-u">Bateria LiFePO4</div><div class="sp-l">73.6V — 7.728 kWh</div></div>
+    <div class="sp" data-n="04"><div class="sp-v">20A</div><div class="sp-u" data-i18n="sp.chg">Carregador Interno</div><div class="sp-l" data-i18n="sp.chg.l">110–240V Bivolt</div></div>
+  </div>
+
+  <div class="diag">
+    <div class="diag-t">⚙️ <span data-i18n="diag.t">DIAGRAMA DO SISTEMA</span></div>
+    <svg viewBox="0 0 320 180" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <rect x="90" y="55" width="140" height="60" rx="5" fill="#111118" stroke="#1c1c28" stroke-width="1.5"/>
+      <rect x="87" y="30" width="146" height="28" rx="4" fill="#0c0c14" stroke="#E8A020" stroke-width="1"/>
+      <rect x="89" y="56" width="142" height="4" rx="2" fill="#E8A020" opacity=".45"/>
+      <rect x="92" y="58" width="10" height="50" fill="#0c0c14"/>
+      <rect x="218" y="58" width="10" height="50" fill="#0c0c14"/>
+      <rect x="120" y="64" width="36" height="26" rx="3" fill="#E8A020" opacity=".8"/>
+      <rect x="165" y="64" width="36" height="26" rx="3" fill="#E8A020" opacity=".6"/>
+      <circle cx="115" cy="132" r="20" fill="#080810" stroke="#2a2a3a" stroke-width="1.5"/>
+      <circle cx="115" cy="132" r="12" fill="#05050a" stroke="#E8A020" stroke-width="1"/>
+      <circle cx="115" cy="132" r="4" fill="#111" stroke="#444" stroke-width="1"/>
+      <circle cx="205" cy="132" r="20" fill="#080810" stroke="#2a2a3a" stroke-width="1.5"/>
+      <circle cx="205" cy="132" r="12" fill="#05050a" stroke="#E8A020" stroke-width="1"/>
+      <circle cx="205" cy="132" r="4" fill="#111" stroke="#444" stroke-width="1"/>
+      <circle cx="18" cy="58" r="10" fill="rgba(232,160,32,.15)" stroke="#E8A020" stroke-width="1"/>
+      <text x="18" y="62" font-family="'Bebas Neue'" font-size="11" fill="#E8A020" text-anchor="middle">1</text>
+      <text x="30" y="54" font-size="7" fill="#888899" font-family="Inter">Motor</text>
+      <text x="30" y="63" font-size="8" fill="#EDEDF5" font-family="Inter" font-weight="600">72V AC · 6.3kW</text>
+      <line x1="28" y1="58" x2="90" y2="80" stroke="#E8A020" stroke-width=".7" stroke-dasharray="4 3" opacity=".5"/>
+      <circle cx="18" cy="108" r="10" fill="rgba(232,160,32,.15)" stroke="#E8A020" stroke-width="1"/>
+      <text x="18" y="112" font-family="'Bebas Neue'" font-size="11" fill="#E8A020" text-anchor="middle">3</text>
+      <text x="30" y="104" font-size="7" fill="#888899" font-family="Inter">Bateria</text>
+      <text x="30" y="113" font-size="8" fill="#EDEDF5" font-family="Inter" font-weight="600">LiFePO4 105Ah</text>
+      <line x1="28" y1="108" x2="90" y2="108" stroke="#E8A020" stroke-width=".7" stroke-dasharray="4 3" opacity=".5"/>
+      <circle cx="302" cy="68" r="10" fill="rgba(232,160,32,.15)" stroke="#E8A020" stroke-width="1"/>
+      <text x="302" y="72" font-family="'Bebas Neue'" font-size="11" fill="#E8A020" text-anchor="middle">2</text>
+      <text x="292" y="60" font-size="7" fill="#888899" font-family="Inter" text-anchor="end">Controlador</text>
+      <text x="292" y="69" font-size="8" fill="#EDEDF5" font-family="Inter" font-weight="600" text-anchor="end">72V 350A AC</text>
+      <line x1="292" y1="68" x2="230" y2="85" stroke="#E8A020" stroke-width=".7" stroke-dasharray="4 3" opacity=".5"/>
+      <circle cx="302" cy="108" r="10" fill="rgba(232,160,32,.15)" stroke="#E8A020" stroke-width="1"/>
+      <text x="302" y="112" font-family="'Bebas Neue'" font-size="11" fill="#E8A020" text-anchor="middle">4</text>
+      <text x="292" y="100" font-size="7" fill="#888899" font-family="Inter" text-anchor="end">Carregador</text>
+      <text x="292" y="109" font-size="8" fill="#EDEDF5" font-family="Inter" font-weight="600" text-anchor="end">110–240V 20A</text>
+      <line x1="292" y1="108" x2="230" y2="108" stroke="#E8A020" stroke-width=".7" stroke-dasharray="4 3" opacity=".5"/>
+      <text x="160" y="175" font-family="'Bebas Neue'" font-size="12" fill="#E8A020" text-anchor="middle" letter-spacing="2">POR QUE 72V?</text>
+      <text x="160" y="162" font-size="7" fill="#888899" text-anchor="middle" font-family="Inter">Motor AC superior em eficiência e torque</text>
+    </svg>
+  </div>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="pillar.ey">Pilares da Marca</div>
+  <div class="pillar"><div class="p-ic">⚡</div><div><div class="p-t" data-i18n="pillar.1t">INOVAÇÃO</div><div class="p-d" data-i18n="pillar.1d">Motor AC 72V com eficiência superior aos sistemas tradicionais de 48V — mais aceleração, mais torque, menos calor gerado.</div></div></div>
+  <div class="pillar"><div class="p-ic">🔄</div><div><div class="p-t" data-i18n="pillar.2t">VERSATILIDADE</div><div class="p-d" data-i18n="pillar.2d">Portfólio completo: condomínios, clubes, hotéis, resorts, fazendas e operações urbanas — um DACH para cada cenário.</div></div></div>
+  <div class="pillar"><div class="p-ic">🌿</div><div><div class="p-t" data-i18n="pillar.3t">SUSTENTABILIDADE</div><div class="p-d" data-i18n="pillar.3d">Na DACH Motors, a energia solar não é acessório — ela faz parte da lógica do produto e do nosso propósito como empresa.</div></div></div>
+  <div class="pillar"><div class="p-ic">🏆</div><div><div class="p-t" data-i18n="pillar.4t">QUALIDADE AUTOMOTIVA</div><div class="p-d" data-i18n="pillar.4d">Chassi monobloco eletrodialítico, bancos ergonômicos forjados em peça única e acabamento de nível automotivo em todos os modelos.</div></div></div>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="mkt.ey">Mercados Atendidos</div>
+  <div class="mkt-grid" style="margin-bottom:24px">
+    <div class="mkt"><div class="mkt-ic">🏘️</div><div class="mkt-t" data-i18n="mkt.1">CONDOS</div><div class="mkt-d" data-i18n="mkt.1d">Condomínios residenciais e gated communities</div></div>
+    <div class="mkt"><div class="mkt-ic">⛳</div><div class="mkt-t" data-i18n="mkt.2">CLUBES</div><div class="mkt-d" data-i18n="mkt.2d">Golf clubs e clubes esportivos de alto padrão</div></div>
+    <div class="mkt"><div class="mkt-ic">🏨</div><div class="mkt-t" data-i18n="mkt.3">HOTÉIS</div><div class="mkt-d" data-i18n="mkt.3d">Resorts, pousadas e hospitality premium</div></div>
+    <div class="mkt"><div class="mkt-ic">🌾</div><div class="mkt-t" data-i18n="mkt.4">FAZENDAS</div><div class="mkt-d" data-i18n="mkt.4d">Propriedades rurais e agronegócio</div></div>
+    <div class="mkt"><div class="mkt-ic">🏙️</div><div class="mkt-t" data-i18n="mkt.5">URBANO</div><div class="mkt-d" data-i18n="mkt.5d">Mobilidade urbana e last-mile delivery</div></div>
+    <div class="mkt"><div class="mkt-ic">🏭</div><div class="mkt-t" data-i18n="mkt.6">INDÚSTRIA</div><div class="mkt-d" data-i18n="mkt.6d">Plantas industriais e logística interna</div></div>
+  </div>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="tl.ey">Nossa Jornada</div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot">1</div><div><div class="tl-y">2023</div><div class="tl-t" data-i18n="tl.1t">Fundação da DACH Motors</div><div class="tl-d" data-i18n="tl.1d">Início do desenvolvimento da tecnologia 72V AC para mobilidade elétrica.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">2</div><div><div class="tl-y">2024</div><div class="tl-t" data-i18n="tl.2t">Lançamento do Apollo</div><div class="tl-d" data-i18n="tl.2d">Primeiro modelo com Cruise Control exclusivo no mercado brasileiro.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">3</div><div><div class="tl-y">2025</div><div class="tl-t" data-i18n="tl.3t">Falcon Solar e DCO Autopilot</div><div class="tl-d" data-i18n="tl.3d">Expansão do portfólio com energia solar integrada e piloto automático.</div></div></div>
+    <div class="tl-item"><div class="tl-dot">★</div><div><div class="tl-y" data-i18n="tl.4y">HOJE</div><div class="tl-t" data-i18n="tl.4t">Expansão Nacional</div><div class="tl-d" data-i18n="tl.4d">Rede de parceiros e revendedores em crescimento por todo o Brasil.</div></div></div>
+  </div>
+
+  <button class="bp" data-i18n="emp.cta" onclick="gt(2)">Ver Todos os Modelos →</button>
+</div>
+<div class="pf"><div class="pf-logo">DACH MOTORS</div><div class="pf-tag" data-i18n="pf.tag2">INOVAÇÃO · VERSATILIDADE · SUSTENTABILIDADE</div></div>
+</div>
+</div>
+
+<!-- ══ P2 MODELOS ══ -->
+<div class="page" id="p2">
+<div class="pc">
+  <div style="padding:18px 18px 4px">
+    <div class="ey" data-i18n="mod.ey">Portfolio Completo</div>
+    <div class="H2" data-i18n="mod.t">MODELOS</div>
+  </div>
+  <div class="ms" id="msel">
+    <div class="mst a" onclick="sm('falcon')" id="mst-falcon"><div class="mst-n">FALCON</div><div class="mst-s">☀️ Solar 2+2</div></div>
+    <div class="mst" onclick="sm('apollo')" id="mst-apollo"><div class="mst-n">APOLLO</div><div class="mst-s" data-i18n="mst.performance">🏆 Performance</div></div>
+    <div class="mst" onclick="sm('dco')" id="mst-dco"><div class="mst-n">DCO</div><div class="mst-s">🤖 Autopilot</div></div>
+  </div>
+
+  <div class="mp a" id="mp-falcon">
+    <div class="mp-hero">
+      <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=900&q=82" alt="DACH Falcon">
+      <div class="mp-hero-g"></div>
+      <div class="mp-badge" data-i18n="mp.falcon.badge">☀️ Solar · 2+2 Lugares · LiFePO4</div>
+      <div class="mp-bottom"><div class="mp-n">FALCON</div><div class="mp-tg" data-i18n="mp.falcon.tag">Solar, inovação e conforto</div></div>
+    </div>
+    <div class="spec-mini">
+      <div class="sm-item"><div class="sm-v">5.3kW</div><div class="sm-l" data-i18n="sm.motor">Motor</div></div>
+      <div class="sm-item"><div class="sm-v">105Ah</div><div class="sm-l" data-i18n="sm.battery">Bateria</div></div>
+      <div class="sm-item"><div class="sm-v">2+2</div><div class="sm-l" data-i18n="sm.seats">Lugares</div></div>
+      <div class="sm-item"><div class="sm-v">20A</div><div class="sm-l" data-i18n="sm.charge">Carga</div></div>
+    </div>
+    <div class="cpk">
+      <span class="cpk-l" data-i18n="cpk.color">Cor:</span>
+      <div class="cd a" style="background:#111118" onclick="cpk(this)"><span class="cd-name">Preto</span></div>
+      <div class="cd" style="background:#4a3fa0" onclick="cpk(this)"><span class="cd-name">Violeta</span></div>
+      <div class="cd" style="background:#b8b8b8" onclick="cpk(this)"><span class="cd-name">Prata</span></div>
+      <div class="cd" style="background:#8B0000" onclick="cpk(this)"><span class="cd-name">Vinho</span></div>
+      <div class="cd" style="background:#003366" onclick="cpk(this)"><span class="cd-name">Azul</span></div>
+    </div>
+    <p class="mp-desc" data-i18n="mp.falcon.desc">O <strong>Falcon 2+2</strong> é a resposta da DACH para quem quer eficiência energética com versatilidade familiar e operacional. Na DACH Motors, a energia solar não é acessório — ela faz parte da lógica do produto e do nosso propósito.</p>
+    <div class="feats">
+      <div class="fi"><div class="fi-n">1</div><div><div class="fi-t" data-i18n="ff.1t">Integração Solar</div><div class="fi-d" data-i18n="ff.1d">Painel solar integrado reduz consumo da rede e custo de operação.</div></div></div>
+      <div class="fi"><div class="fi-n">2</div><div><div class="fi-t">Bateria LiFePO4 — 7.728 kWh</div><div class="fi-d" data-i18n="ff.2d">73.6V / 105Ah. Mais segura, durável e termicamente estável que baterias convencionais.</div></div></div>
+      <div class="fi"><div class="fi-n">3</div><div><div class="fi-t" data-i18n="ff.3t">Motor AC 5.3 kW</div><div class="fi-d" data-i18n="ff.3d">Torque consistente e eficiência superior entregues em qualquer condição de condução.</div></div></div>
+      <div class="fi"><div class="fi-n">4</div><div><div class="fi-t" data-i18n="ff.4t">Carregamento Flexível</div><div class="fi-d" data-i18n="ff.4d">110V a 240V via carregador interno inteligente integrado de 20A.</div></div></div>
+      <div class="fi"><div class="fi-n">5</div><div><div class="fi-t" data-i18n="ff.5t">Configuração 2+2 Passageiros</div><div class="fi-d" data-i18n="ff.5d">Ideal para transporte em condomínios, lazer, clubes e uso familiar.</div></div></div>
+      <div class="fi"><div class="fi-n">6</div><div><div class="fi-t" data-i18n="ff.6t">Cluster Duplo Monofônico</div><div class="fi-d" data-i18n="ff.6d">Acabamento de nível automotivo com qualidade de revestimento premium.</div></div></div>
+    </div>
+    <div class="ey" style="margin-bottom:10px" data-i18n="mp.gallery">Galeria do Modelo</div>
+    <div class="mg" style="margin-bottom:16px">
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1000&q=85','Falcon — Vista frontal')"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1000&q=85','Falcon — Ambiente')"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=1000&q=85','Falcon — Resort')"><img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=1000&q=85','Falcon — Condomínio')"><img src="https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1000&q=85','Falcon — Design')"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=220&q=70"></div>
+    </div>
+    <div class="mp-btns">
+      <button class="bp" onclick="gt(3);setTimeout(()=>sv3('falcon',document.getElementById('v3t-falcon')),350)" data-i18n="mp.btn360">Visualizar em 360° 🔄</button>
+      <button class="bo" onclick="gt(4)" data-i18n="mp.btnFalcon">Solicitar Proposta Falcon</button>
+    </div>
+  </div>
+
+  <div class="mp" id="mp-apollo">
+    <div class="mp-hero">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=82" alt="DACH Apollo">
+      <div class="mp-hero-g"></div>
+      <div class="mp-badge" data-i18n="mp.apollo.badge">🏆 Alta Performance · Cruise Control</div>
+      <div class="mp-bottom"><div class="mp-n">APOLLO</div><div class="mp-tg" data-i18n="mp.apollo.tag">Robustez e conforto superior</div></div>
+    </div>
+    <div class="spec-mini">
+      <div class="sm-item"><div class="sm-v">6.3kW</div><div class="sm-l" data-i18n="sm.motor">Motor</div></div>
+      <div class="sm-item"><div class="sm-v">72V</div><div class="sm-l" data-i18n="sm.battery">Bateria</div></div>
+      <div class="sm-item"><div class="sm-v">4</div><div class="sm-l" data-i18n="sm.seats">Lugares</div></div>
+      <div class="sm-item"><div class="sm-v">350A</div><div class="sm-l" data-i18n="sm.ctrl">Control.</div></div>
+    </div>
+    <div class="cpk">
+      <span class="cpk-l" data-i18n="cpk.color">Cor:</span>
+      <div class="cd a" style="background:#111118" onclick="cpk(this)"><span class="cd-name">Preto</span></div>
+      <div class="cd" style="background:#4a3fa0" onclick="cpk(this)"><span class="cd-name">Violeta</span></div>
+      <div class="cd" style="background:#b8b8b8" onclick="cpk(this)"><span class="cd-name">Prata</span></div>
+      <div class="cd" style="background:#8B0000" onclick="cpk(this)"><span class="cd-name">Vinho</span></div>
+    </div>
+    <p class="mp-desc" data-i18n="mp.apollo.desc">O <strong>Apollo</strong> é o modelo para quem prioriza robustez mecânica e conforto superior. Com <strong>Cruise Control exclusivo no mercado brasileiro</strong>, garantindo condução estável e permanente em qualquer terreno.</p>
+    <div class="feats">
+      <div class="fi"><div class="fi-n">1</div><div><div class="fi-t" data-i18n="fa.1t">Cruise Control Exclusivo</div><div class="fi-d" data-i18n="fa.1d">Único no mercado brasileiro — condução estável e permanente sem esforço.</div></div></div>
+      <div class="fi"><div class="fi-n">2</div><div><div class="fi-t" data-i18n="fa.2t">Chassi Monobloco Eletrodialítico</div><div class="fi-d" data-i18n="fa.2d">Estrutura que aumenta resistência à corrosão e vida útil do veículo.</div></div></div>
+      <div class="fi"><div class="fi-n">3</div><div><div class="fi-t" data-i18n="fa.3t">Bancos Ergonômicos Únicos</div><div class="fi-d" data-i18n="fa.3d">Forjados em peça única com conforto real e acabamento automotivo premium.</div></div></div>
+      <div class="fi"><div class="fi-n">4</div><div><div class="fi-t" data-i18n="fa.4t">Freios e Suspensão Reforçados</div><div class="fi-d" data-i18n="fa.4d">Adaptados para uso em ambientes urbanos, condomínios e operações de lazer.</div></div></div>
+      <div class="fi"><div class="fi-n">5</div><div><div class="fi-t" data-i18n="fa.5t">Bateria 72V Alto Rendimento</div><div class="fi-d" data-i18n="fa.5d">Autonomia constante para operações diárias intensas e exigentes.</div></div></div>
+    </div>
+    <div class="ey" style="margin-bottom:10px" data-i18n="mp.gallery">Galeria do Modelo</div>
+    <div class="mg" style="margin-bottom:16px">
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=85','Apollo — Vista frontal')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1000&q=85','Apollo — Performance')"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85','Apollo — Detalhe')"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=1000&q=85','Apollo — Resort')"><img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1542362567-b07e54358753?w=1000&q=85','Apollo — Uso comercial')"><img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=220&q=70"></div>
+    </div>
+    <div class="mp-btns">
+      <button class="bp" onclick="gt(3);setTimeout(()=>sv3('apollo',document.getElementById('v3t-apollo')),350)" data-i18n="mp.btn360">Visualizar em 360° 🔄</button>
+      <button class="bo" onclick="gt(4)" data-i18n="mp.btnApollo">Solicitar Proposta Apollo</button>
+    </div>
+  </div>
+
+  <div class="mp" id="mp-dco">
+    <div class="mp-hero">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=82" alt="DACH DCO">
+      <div class="mp-hero-g"></div>
+      <div class="mp-badge" data-i18n="mp.dco.badge">🤖 Piloto Automático · Exclusivo no Mercado</div>
+      <div class="mp-bottom"><div class="mp-n">DCO</div><div class="mp-tg" data-i18n="mp.dco.tag">O futuro é agora</div></div>
+    </div>
+    <div class="spec-mini">
+      <div class="sm-item"><div class="sm-v">72V AC</div><div class="sm-l" data-i18n="sm.motor">Motor</div></div>
+      <div class="sm-item"><div class="sm-v">LIDAR</div><div class="sm-l" data-i18n="sm.sensors">Sensores</div></div>
+      <div class="sm-item"><div class="sm-v">OS</div><div class="sm-l">DACH</div></div>
+      <div class="sm-item"><div class="sm-v">AUTO</div><div class="sm-l" data-i18n="sm.pilot">Piloto</div></div>
+    </div>
+    <div class="cpk">
+      <span class="cpk-l" data-i18n="cpk.color">Cor:</span>
+      <div class="cd a" style="background:#111118" onclick="cpk(this)"><span class="cd-name">Preto</span></div>
+      <div class="cd" style="background:#003366" onclick="cpk(this)"><span class="cd-name">Azul</span></div>
+      <div class="cd" style="background:#4a3fa0" onclick="cpk(this)"><span class="cd-name">Violeta</span></div>
+      <div class="cd" style="background:#b8b8b8" onclick="cpk(this)"><span class="cd-name">Prata</span></div>
+    </div>
+    <p class="mp-desc" data-i18n="mp.dco.desc">O <strong>DACH DCO</strong> representa o ápice da engenharia DACH: o <strong>primeiro e único carrinho elétrico com piloto automático disponível no mercado</strong>. Tecnologia automotiva de ponta aplicada à mobilidade sustentável.</p>
+    <div class="feats">
+      <div class="fi"><div class="fi-n">1</div><div><div class="fi-t" data-i18n="fd.1t">Piloto Automático DACH OS</div><div class="fi-d" data-i18n="fd.1d">Sistema de navegação autônoma integrado — o primeiro do segmento no Brasil.</div></div></div>
+      <div class="fi"><div class="fi-n">2</div><div><div class="fi-t" data-i18n="fd.2t">Tela Central Automotiva</div><div class="fi-d" data-i18n="fd.2d">Display de alto nível com interface DACH OS completa e intuitiva.</div></div></div>
+      <div class="fi"><div class="fi-n">3</div><div><div class="fi-t" data-i18n="fd.3t">Volante Automotivo</div><div class="fi-d" data-i18n="fd.3d">Qualidade e ergonomia de mercado automotivo premium.</div></div></div>
+      <div class="fi"><div class="fi-n">4</div><div><div class="fi-t" data-i18n="fd.4t">Array de Sensores</div><div class="fi-d" data-i18n="fd.4d">Câmeras e sensores LIDAR para navegação segura em qualquer ambiente fechado.</div></div></div>
+    </div>
+    <div class="ey" style="margin-bottom:10px" data-i18n="mp.gallery">Galeria do Modelo</div>
+    <div class="mg" style="margin-bottom:16px">
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85','DCO — Sistema autônomo')"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=1000&q=85','DCO — Interior')"><img src="https://images.unsplash.com/photo-1628626819220-f89d1e7dfc1e?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1000&q=85','DCO — Tecnologia')"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=220&q=70"></div>
+      <div class="mg-t" onclick="lb('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=85','DCO — Ambiente')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=220&q=70"></div>
+    </div>
+    <div class="mp-btns">
+      <button class="bp" onclick="gt(3);setTimeout(()=>sv3('dco',document.getElementById('v3t-dco')),350)" data-i18n="mp.btn360">Visualizar em 360° 🔄</button>
+      <button class="bo" onclick="gt(4)" data-i18n="mp.btnDco">Solicitar Proposta DCO</button>
+    </div>
+  </div>
+
+  <div class="sec" style="padding-top:8px">
+    <div class="ey" data-i18n="cmp.ey">Comparativo</div>
+    <div class="H3" style="margin-bottom:4px" data-i18n="cmp.t">QUAL ESCOLHER?</div>
+    <div class="compare-wrap">
+    <table class="compare-table">
+      <tr><th data-i18n="cmp.spec">Spec</th><th>FALCON</th><th>APOLLO</th><th>DCO</th></tr>
+      <tr><td data-i18n="cmp.motor">Motor</td><td>5.3kW</td><td>6.3kW</td><td>6.3kW</td></tr>
+      <tr><td data-i18n="cmp.solar">Solar</td><td>✅</td><td>—</td><td>—</td></tr>
+      <tr><td data-i18n="cmp.cruise">Cruise Ctrl</td><td>—</td><td>✅</td><td>✅</td></tr>
+      <tr><td data-i18n="cmp.auto">Piloto Auto</td><td>—</td><td>—</td><td>✅</td></tr>
+      <tr><td data-i18n="cmp.seats">Lugares</td><td>2+2</td><td>4</td><td>4</td></tr>
+      <tr><td>LiFePO4</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="pf"><div class="pf-logo">DACH MOTORS</div><div class="pf-tag" data-i18n="pf.tag3">ENGENHARIA + PERFORMANCE</div></div>
+</div>
+</div>
+
+<!-- ══ P3 360 ══ -->
+<div class="page" id="p3">
+<div class="v3d">
+  <div class="v3d-top">
+    <div class="ey" style="margin-bottom:4px" data-i18n="v3.ey">Visualizador Interativo</div>
+    <div class="H3" style="font-size:26px" data-i18n="v3.t">EXPLORAR EM 360°</div>
+    <div class="v3d-tabs">
+      <div class="v3t a" onclick="sv3('apollo',this)" id="v3t-apollo"><div class="v3t-n">APOLLO</div><div class="v3t-s" data-i18n="mst.performance2">Performance</div></div>
+      <div class="v3t" onclick="sv3('falcon',this)" id="v3t-falcon"><div class="v3t-n">FALCON</div><div class="v3t-s">Solar</div></div>
+      <div class="v3t" onclick="sv3('dco',this)" id="v3t-dco"><div class="v3t-n">DCO</div><div class="v3t-s">Autopilot</div></div>
+    </div>
+  </div>
+  <div class="canvas-w">
+    <canvas id="c3d"></canvas>
+    <div class="v3-info">
+      <div class="v3-model" id="v3n">APOLLO</div>
+      <div class="v3-row"><span class="v3-lbl" data-i18n="v3.motor">Motor</span><span class="v3-val">72V AC</span></div>
+      <div class="v3-row"><span class="v3-lbl" data-i18n="v3.power">Potência</span><span class="v3-val">6.3 kW</span></div>
+      <div class="v3-row"><span class="v3-lbl" data-i18n="v3.battery">Bateria</span><span class="v3-val">LiFePO4</span></div>
+      <div class="v3-row"><span class="v3-lbl" data-i18n="v3.cap">Cap.</span><span class="v3-val">105 Ah</span></div>
+    </div>
+    <div class="v3-reset" onclick="resetView()" data-i18n="v3.reset">↻ RESET</div>
+    <div class="v3-colors">
+      <div class="vc a" style="background:#141418" onclick="cc3('#141418',this)" title="Preto"></div>
+      <div class="vc" style="background:#4a3fa0" onclick="cc3('#4a3fa0',this)" title="Violeta"></div>
+      <div class="vc" style="background:#b0b0b0" onclick="cc3('#b0b0b0',this)" title="Prata"></div>
+      <div class="vc" style="background:#8B0000" onclick="cc3('#8B0000',this)" title="Vinho"></div>
+      <div class="vc" style="background:#003366" onclick="cc3('#003366',this)" title="Azul"></div>
+    </div>
+    <div class="v3-hud"><span data-i18n="v3.hud1">↕️ Arraste</span> · <span data-i18n="v3.hud2">🔍 Scroll</span> · <span data-i18n="v3.hud3">👆 Pinch</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ══ P4 CONTATO ══ -->
+<div class="page" id="p4">
+<div class="pc">
+<div class="sec">
+  <div class="ey" data-i18n="ct.ey">Seja Parceiro DACH</div>
+  <div class="H2" style="margin-bottom:14px"><span data-i18n="ct.t1">JUNTE-SE AO</span><br><span data-i18n="ct.t2">FUTURO</span></div>
+  <p style="font-size:14px;color:var(--gr1);line-height:1.8;font-weight:300;margin-bottom:20px" data-i18n="ct.p">Na DACH Motors, entregamos mobilidade elétrica que funciona, dura e faz sentido no mundo real. Mercado em expansão, suporte dedicado e portfólio com diferenciação real.</p>
+
+  <div style="border-radius:var(--r);overflow:hidden;aspect-ratio:16/7;margin-bottom:20px;cursor:pointer" onclick="lb('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=1100&q=85','DACH Motors — Sua mobilidade do futuro')">
+    <img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=800&q=75" style="filter:brightness(.6) saturate(1.2)" alt="">
+  </div>
+
+  <div class="ey" data-i18n="ct.why">Por que ser parceiro?</div>
+  <div class="why">
+    <div class="wc"><div class="wc-ic">📈</div><div class="wc-t" data-i18n="ct.w1">EXPANSÃO</div><div class="wc-d" data-i18n="ct.w1d">Mercado de mobilidade elétrica em crescimento acelerado no Brasil.</div></div>
+    <div class="wc"><div class="wc-ic">🏅</div><div class="wc-t" data-i18n="ct.w2">MARGEM</div><div class="wc-d" data-i18n="ct.w2d">Estrutura de margem saudável e diferenciação competitiva real.</div></div>
+    <div class="wc"><div class="wc-ic">🔧</div><div class="wc-t" data-i18n="ct.w3">SUPORTE</div><div class="wc-d" data-i18n="ct.w3d">Suporte técnico dedicado em todos os modelos e configurações.</div></div>
+    <div class="wc"><div class="wc-ic">⚙️</div><div class="wc-t" data-i18n="ct.w4">PORTFÓLIO</div><div class="wc-d" data-i18n="ct.w4d">Pacote tecnológico padrão em todos os modelos da linha DACH.</div></div>
+  </div>
+
+  <div class="ey" data-i18n="ct.faq">Perguntas Frequentes</div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span data-i18n="faq.q1">Qual a autonomia das baterias?</span><span class="faq-arrow">⌄</span></div>
+    <div class="faq-a" data-i18n="faq.a1">As baterias LiFePO4 de 105Ah oferecem autonomia para uso diário intenso em condomínios e operações comerciais, com vida útil muito superior às baterias de chumbo tradicionais.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span data-i18n="faq.q2">Qual o prazo de entrega?</span><span class="faq-arrow">⌄</span></div>
+    <div class="faq-a" data-i18n="faq.a2">O prazo varia conforme o modelo e a quantidade. Nosso consultor informa o prazo exato após o envio do formulário de interesse.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span data-i18n="faq.q3">Existe garantia de fábrica?</span><span class="faq-arrow">⌄</span></div>
+    <div class="faq-a" data-i18n="faq.a3">Sim, todos os modelos DACH possuem garantia de fábrica e suporte técnico dedicado pós-venda.</div>
+  </div>
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+    <div class="faq-q"><span data-i18n="faq.q4">Posso revender os modelos DACH?</span><span class="faq-arrow">⌄</span></div>
+    <div class="faq-a" data-i18n="faq.a4">Sim! A DACH Motors busca parceiros e revendedores em todo o Brasil, com margem saudável e suporte completo.</div>
+  </div>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="ct.talk">Fale Conosco</div>
+  <a class="cl" href="https://www.dachmotorsbrasil.com.br" target="_blank" rel="noopener">
+    <div class="cl-ic">🌐</div><div><div class="cl-l" data-i18n="cl.web">Website</div><div class="cl-v">dachmotorsbrasil.com.br</div></div>
+  </a>
+  <a class="cl" href="https://instagram.com/dach.motorsbrasil" target="_blank" rel="noopener">
+    <div class="cl-ic">📸</div><div><div class="cl-l">Instagram</div><div class="cl-v">@dach.motorsbrasil</div></div>
+  </a>
+  <a class="cl" href="https://wa.me/5511999999999" target="_blank" rel="noopener">
+    <div class="cl-ic">💬</div><div><div class="cl-l">WhatsApp</div><div class="cl-v" data-i18n="cl.wa">Fale agora pelo WhatsApp</div></div>
+  </a>
+
+  <div class="dvd"></div>
+  <div class="ey" data-i18n="ct.form">Formulário de Contato</div>
+  <div class="fg">
+    <div><label class="fl" data-i18n="fm.name">Nome Completo</label><input type="text" class="fi2" id="f-nome" data-i18n-ph="fm.name.ph" placeholder="Seu nome completo"></div>
+    <div><label class="fl">E-mail</label><input type="email" class="fi2" id="f-email" placeholder="seu@email.com"></div>
+    <div><label class="fl" data-i18n="fm.phone">WhatsApp / Telefone</label><input type="tel" class="fi2" id="f-tel" placeholder="(11) 99999-9999"></div>
+    <div><label class="fl" data-i18n="fm.city">Cidade / Estado</label><input type="text" class="fi2" id="f-cid" data-i18n-ph="fm.city.ph" placeholder="Ex: São Paulo / SP"></div>
+    <div>
+      <label class="fl" data-i18n="fm.model">Modelo de Interesse</label>
+      <select class="fsl" id="f-mod">
+        <option value="" data-i18n="fm.select">Selecionar modelo</option>
+        <option data-i18n="fm.opt1">Falcon — Solar 2+2</option>
+        <option data-i18n="fm.opt2">Apollo — Alta Performance</option>
+        <option data-i18n="fm.opt3">DACH DCO — Piloto Automático</option>
+        <option data-i18n="fm.opt4">Toda a linha DACH</option>
+        <option data-i18n="fm.opt5">Quero ser revendedor</option>
+      </select>
+    </div>
+    <div>
+      <label class="fl" data-i18n="fm.msg">Mensagem</label>
+      <textarea class="fta" id="f-msg" data-i18n-ph="fm.msg.ph" placeholder="Conte sobre seu projeto, interesse ou dúvidas…"></textarea>
+    </div>
+    <button class="bp" onclick="enviar()" data-i18n="fm.send">Enviar Solicitação →</button>
+    <button class="bo" onclick="gt(2)" data-i18n="fm.back">← Voltar aos Modelos</button>
+  </div>
+</div>
+<div class="pf"><div class="pf-logo">DACH MOTORS</div><div class="pf-tag" data-i18n="pf.tag4">© 2025 DACH Motors Brasil · Todos os direitos reservados<br>dachmotorsbrasil.com.br · @dach.motorsbrasil</div></div>
+</div>
+</div>
+
+</div>
+
+<div id="bar">
+  <div class="tab a" onclick="gt(0)" id="tab0"><div class="t-icon">🏠</div><div class="t-lbl" data-i18n="tab.home">Início</div></div>
+  <div class="tab" onclick="gt(1)" id="tab1"><div class="t-icon">🏭</div><div class="t-lbl" data-i18n="tab.company">Empresa</div></div>
+  <div class="tab" onclick="gt(2)" id="tab2"><div class="t-icon">🚗</div><div class="t-lbl" data-i18n="tab.models">Modelos</div></div>
+  <div class="tab" onclick="gt(3)" id="tab3"><div class="t-icon">🔄</div><div class="t-lbl">360°</div></div>
+  <div class="tab" onclick="gt(4)" id="tab4"><div class="t-icon">📞</div><div class="t-lbl" data-i18n="tab.contact">Contato</div></div>
+</div>
+
+<!-- WHATSAPP FLOAT -->
+<button id="wa-float" onclick="openWA()">
+  <span class="wa-tooltip" data-i18n="wa.tooltip">Fale no WhatsApp</span>
+  <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.74-.751-2.876-1.34-4.02-3.04-.302-.464.302-.43.86-1.43.094-.18.046-.337-.046-.495-.099-.15-.673-1.62-.92-2.196-.246-.566-.5-.49-.673-.49-.16-.014-.347-.014-.534-.014-.18 0-.475.066-.722.314-.247.255-.94.92-.94 2.24 0 1.32.964 2.595 1.1 2.77.13.18 1.86 2.84 4.52 3.876 2.24.893 2.24.595 3.04.495.8-.09 1.767-.715 2.04-1.39.273-.69.273-1.27.198-1.39-.075-.135-.273-.21-.574-.36z"/><path d="M20.52 3.449C12.831-3.984.106 1.407.101 11.892c0 2.096.547 4.142 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c8.673 0 14.034-9.41 8.466-17.346zm-8.45 17.31h-.005c-1.78 0-3.524-.477-5.044-1.383l-.36-.214-3.76.985.995-3.683-.235-.378a9.864 9.864 0 01-1.51-5.25c0-5.444 4.445-9.885 9.918-9.885 2.652 0 5.143 1.035 7.018 2.916 1.875 1.88 2.907 4.378 2.907 7.027 0 5.444-4.444 9.885-9.918 9.885z"/></svg>
+</button>
+
+<div id="lb" onclick="lbClose()">
+  <button id="lb-close" onclick="lbClose()">✕</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-cap"></div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ════ NAVIGATION ════ */
+let cur=0,t3ok=false;
+const pgs=Array.from(document.querySelectorAll('.page'));
+const tabs=Array.from(document.querySelectorAll('.tab'));
+const dis=Array.from(document.querySelectorAll('.drw-item'));
+
+function gt(n){
+  if(n===cur){cd();return}
+  const d=n>cur?1:-1;
+  // outgoing page
+  pgs[cur].style.transition='transform .55s cubic-bezier(.77,0,.175,1)';
+  pgs[cur].style.transform=d>0?'translateX(-8%)':'translateX(100%)';
+  pgs[cur].classList.remove('active');
+  // incoming page — position it off screen first without transition
+  pgs[n].style.transition='none';
+  pgs[n].style.transform=d>0?'translateX(100%)':'translateX(-8%)';
+  // force reflow then animate in
+  void pgs[n].offsetWidth;
+  pgs[n].style.transition='transform .55s cubic-bezier(.77,0,.175,1)';
+  pgs[n].style.transform='translateX(0)';
+  pgs[n].classList.add('active');
+  // scroll new page to top
+  pgs[n].scrollTop=0;
+  cur=n;
+  tabs.forEach((t,i)=>t.classList.toggle('a',i===n));
+  dis.forEach((d2,i)=>d2.classList.toggle('a',i===n));
+  cd();
+  if(n===3&&!t3ok){setTimeout(i3,120);t3ok=true}
+}
+
+let dop=false;
+const drw=document.getElementById('drw');
+const hbtn=document.getElementById('hbtn');
+function toggleDrawer(){dop=!dop;drw.classList.toggle('o',dop);hbtn.classList.toggle('o',dop)}
+function cd(){dop=false;drw.classList.remove('o');hbtn.classList.remove('o')}
+function dgt(n){gt(n)}
+
+function sm(name){
+  document.querySelectorAll('.mp').forEach(p=>p.classList.remove('a'));
+  document.querySelectorAll('.mst').forEach(t=>t.classList.remove('a'));
+  const mp=document.getElementById('mp-'+name);
+  const mt=document.getElementById('mst-'+name);
+  if(mp)mp.classList.add('a');
+  if(mt){mt.classList.add('a');mt.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'})}
+}
+
+function cpk(d){const p=d.closest('.cpk');p.querySelectorAll('.cd').forEach(x=>x.classList.remove('a'));d.classList.add('a')}
+
+function lb(src,cap){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-cap').textContent=cap||'';
+  document.getElementById('lb').classList.add('o');
+  document.body.style.overflow='hidden';
+}
+function lbClose(){document.getElementById('lb').classList.remove('o');document.body.style.overflow=''}
+
+function toast(msg,dur=3500){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('o');
+  setTimeout(()=>t.classList.remove('o'),dur);
+}
+
+function enviar(){
+  const n=document.getElementById('f-nome').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  const t=document.getElementById('f-tel').value.trim();
+  if(!n||!e||!t){toast(WALANG==='en'?'⚠️ Please fill name, email and phone.':'⚠️ Preencha nome, e-mail e telefone.');return}
+  toast(WALANG==='en'?'✅ Request sent! DACH will contact you soon.':'✅ Solicitação enviada! A DACH entrará em contato em breve.');
+  setTimeout(()=>{
+    ['f-nome','f-email','f-tel','f-cid','f-mod','f-msg'].forEach(id=>document.getElementById(id).value='');
+  },500);
+}
+
+let sx=0,sy=0;
+document.getElementById('pages').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+document.getElementById('pages').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-sx;
+  const dy2=Math.abs(e.changedTouches[0].clientY-sy);
+  if(Math.abs(dx)>65&&dy2<70){if(dx<0&&cur<4)gt(cur+1);if(dx>0&&cur>0)gt(cur-1)}
+},{passive:true});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'&&cur<4)gt(cur+1);
+  if(e.key==='ArrowLeft'&&cur>0)gt(cur-1);
+  if(e.key==='Escape'){cd();lbClose()}
+});
+
+/* ════ THREE.JS ════ */
+let scene,cam,ren,cart,bMat;
+let rY=0.3,rX=0.22,drag=false,lp={x:0,y:0};
+const INITY=0.3,INITX=0.22,INITZ=7.5;
+
+function i3(){
+  const cvs=document.getElementById('c3d');
+  const W=cvs.clientWidth,H=cvs.clientHeight;
+  scene=new THREE.Scene();
+  cam=new THREE.PerspectiveCamera(42,W/H,.1,100);
+  cam.position.set(0,2.2,INITZ);cam.lookAt(0,.4,0);
+  ren=new THREE.WebGLRenderer({canvas:cvs,antialias:true,alpha:true});
+  ren.setSize(W,H);ren.setPixelRatio(Math.min(devicePixelRatio,2));
+  ren.shadowMap.enabled=true;
+
+  scene.add(new THREE.AmbientLight(0xffffff,.5));
+  const kl=new THREE.DirectionalLight(0xfff0d0,1.3);kl.position.set(4,8,5);kl.castShadow=true;scene.add(kl);
+  const fl=new THREE.DirectionalLight(0xe8a020,.6);fl.position.set(-5,3,-4);scene.add(fl);
+  const rl=new THREE.DirectionalLight(0xe8a020,.9);rl.position.set(0,1.5,-7);scene.add(rl);
+
+  const g=new THREE.GridHelper(24,40,0x1c1c28,0x14141e);g.position.y=-1.15;scene.add(g);
+
+  cart=bc();scene.add(cart);
+
+  cvs.addEventListener('mousedown',e=>{drag=true;lp={x:e.clientX,y:e.clientY}});
+  window.addEventListener('mouseup',()=>drag=false);
+  window.addEventListener('mousemove',e=>{if(!drag)return;rY+=(e.clientX-lp.x)*.012;rX+=(e.clientY-lp.y)*.006;rX=Math.max(-.5,Math.min(.7,rX));lp={x:e.clientX,y:e.clientY}});
+  cvs.addEventListener('touchstart',e=>{drag=true;lp={x:e.touches[0].clientX,y:e.touches[0].clientY};e.stopPropagation()},{passive:true});
+  cvs.addEventListener('touchend',()=>drag=false);
+  cvs.addEventListener('touchmove',e=>{if(!drag)return;rY+=(e.touches[0].clientX-lp.x)*.015;rX+=(e.touches[0].clientY-lp.y)*.008;rX=Math.max(-.5,Math.min(.7,rX));lp={x:e.touches[0].clientX,y:e.touches[0].clientY};e.preventDefault();e.stopPropagation()},{passive:false});
+  cvs.addEventListener('wheel',e=>{cam.position.z=Math.max(3.5,Math.min(13,cam.position.z+e.deltaY*.01))});
+
+  let lPinch=0;
+  cvs.addEventListener('touchstart',e=>{if(e.touches.length===2)lPinch=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY)},{passive:true});
+  cvs.addEventListener('touchmove',e=>{if(e.touches.length!==2)return;const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);cam.position.z=Math.max(3.5,Math.min(13,cam.position.z-(d-lPinch)*.035));lPinch=d},{passive:true});
+
+  window.addEventListener('resize',()=>{
+    const cvsEl=document.getElementById('c3d');
+    if(!cvsEl)return;
+    const W2=cvsEl.clientWidth,H2=cvsEl.clientHeight;
+    if(W2>0&&H2>0){cam.aspect=W2/H2;cam.updateProjectionMatrix();ren.setSize(W2,H2);}
+  });
+  an();
+}
+
+function resetView(){rY=INITY;rX=INITX;if(cam)cam.position.z=INITZ}
+
+function bc(){
+  const g=new THREE.Group();
+  const A=0xE8A020;
+  bMat=new THREE.MeshStandardMaterial({color:0x141418,roughness:.22,metalness:.82});
+  const am=new THREE.MeshStandardMaterial({color:A,roughness:.2,metalness:.4,emissive:A,emissiveIntensity:.22});
+  const dk=new THREE.MeshStandardMaterial({color:0x090910,roughness:.6,metalness:.3});
+  const st=new THREE.MeshStandardMaterial({color:A,roughness:.85,metalness:0});
+  const ch=new THREE.MeshStandardMaterial({color:0xaaaaaa,roughness:.05,metalness:1});
+  const tr=new THREE.MeshStandardMaterial({color:0x080810,roughness:.9,metalness:0});
+  const rm=new THREE.MeshStandardMaterial({color:0x555568,roughness:.08,metalness:.98});
+  const gl=new THREE.MeshStandardMaterial({color:0x88aacc,transparent:true,opacity:.12,roughness:0,metalness:0});
+
+  const add=(geo,mat,x,y,z)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x||0,y||0,z||0);m.castShadow=true;g.add(m);return m};
+
+  add(new THREE.BoxGeometry(3,.45,1.5),bMat,0,.22,0);
+  add(new THREE.BoxGeometry(.55,.38,1.4),bMat,-1.75,.1,0);
+  add(new THREE.BoxGeometry(3,.09,1.5),dk,0,-.03,0);
+  [[-0.45,.24],[.5,.24],[-0.45,-.44],[.5,-.44]].forEach(([x,z])=>{
+    add(new THREE.BoxGeometry(.56,.13,.58),st,x,.55,z);
+    add(new THREE.BoxGeometry(.56,.55,.1),st,x,.82,z+.24);
+  });
+  const sg=new THREE.Group();sg.position.set(-.5,.88,.24);sg.rotation.x=Math.PI/4;
+  sg.add(new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.32),dk));
+  const sw=new THREE.Mesh(new THREE.TorusGeometry(.22,.026,8,32),ch);sw.position.y=.16;sg.add(sw);g.add(sg);
+  add(new THREE.BoxGeometry(.05,.58,1.35),gl,-1,.78,0);
+  add(new THREE.BoxGeometry(2.7,.07,1.65),dk,0,1.78,0);
+  add(new THREE.BoxGeometry(2.7,.04,.05),am,0,1.75,-.82);
+  add(new THREE.BoxGeometry(2.7,.04,.05),am,0,1.75,.82);
+  [[-1.2,-.63],[-1.2,.63],[1.2,-.63],[1.2,.63]].forEach(([x,z])=>add(new THREE.CylinderGeometry(.045,.045,1.4),dk,x,1.08,z));
+  add(new THREE.BoxGeometry(.07,.32,1.3),dk,-2,.1,0);
+  [-.42,.42].forEach(z=>add(new THREE.BoxGeometry(.07,.13,.32),am,-2.02,.3,z));
+  [[-1.1,-.78],[-1.1,.78],[1.1,-.78],[1.1,.78]].forEach(([x,z])=>{
+    const w=new THREE.Mesh(new THREE.CylinderGeometry(.41,.41,.24,24),tr);w.rotation.z=Math.PI/2;w.position.set(x,-.4,z);w.castShadow=true;g.add(w);
+    const r=new THREE.Mesh(new THREE.CylinderGeometry(.27,.27,.26,14),rm);r.rotation.z=Math.PI/2;r.position.set(x,-.4,z);g.add(r);
+    const c=new THREE.Mesh(new THREE.CylinderGeometry(.075,.075,.27,8),am);c.rotation.z=Math.PI/2;c.position.set(x,-.4,z);g.add(c);
+  });
+  add(new THREE.BoxGeometry(.65,.09,.01),am,-.15,.44,-.76);
+  g.position.y=.55;return g;
+}
+
+function cc3(hex,dot){if(bMat)bMat.color.setStyle(hex);document.querySelectorAll('.vc').forEach(d=>d.classList.remove('a'));dot.classList.add('a')}
+function sv3(name,btn){document.querySelectorAll('.v3t').forEach(b=>b.classList.remove('a'));btn.classList.add('a');document.getElementById('v3n').textContent=name.toUpperCase()}
+function an(){requestAnimationFrame(an);if(!drag)rY+=.005;if(cart){cart.rotation.y=rY;cart.rotation.x=rX}if(ren)ren.render(scene,cam)}
+
+/* ════ FAQ ════ already inline onclick toggles 'open' class */
+
+/* ════ I18N ════ */
+let WALANG='pt';
+const I18N={
+  en:{
+    'nav.partner':'Partner',
+    'drw.nav':'Navigation','drw.home':'HOME','drw.home.sub':'Overview & highlights','drw.company':'COMPANY','drw.company.sub':'Technology & mission',
+    'drw.models':'MODELS','drw.viewer':'360° VIEWER','drw.viewer.sub':'Interactive 3D model','drw.contact':'CONTACT','drw.contact.sub':'Become a DACH partner',
+    'drw.direct':'Jump straight to a model','drw.performance':'Performance','drw.follow':'Follow DACH',
+    'hero.pill':'⚡ Premium Electric Mobility','hero.t1':'DISCOVER','hero.t2':'THE FUTURE OF','hero.t3':'TRANSPORT',
+    'hero.sub':'DACH Motors redefines electric mobility with a 72V AC motor, LiFePO4 battery and a driving experience above the segment standard.',
+    'hero.btn1':'View Models →','hero.stat1':'AC Motor','hero.stat2':'Power',
+    'trust.b1':'100%','trust.b1t':'Electric','trust.b2t':'AC System','trust.b3':'Warranty','trust.b3t':'factory backed','trust.b4':'Brazil',
+    'diff.ey':'Differentials','diff.t1':'ENGINEERING +','diff.t2':'PERFORMANCE',
+    'diff.f1':'INNOVATION','diff.f1d':'72V AC motor with 350A controller and high-durability LiFePO4 battery.',
+    'diff.f2':'VERSATILITY','diff.f2d':'Residential, commercial and leisure — a full portfolio for every application.',
+    'diff.f3':'SOLAR','diff.f3d':'Solar energy built into the product — not an accessory, a purpose.',
+    'diff.f4':'PARTNERSHIP','diff.f4d':'Expanding market, healthy margins and dedicated support.',
+    'gal.ey':'Gallery','gal.t1':'SEE OUR','gal.t2':'CARTS','gal.lifestyle':'Lifestyle','gal.condo':'Condominium','gal.tech':'Technology','gal.commercial':'Commercial','gal.design':'Design',
+    'port.ey':'Portfolio','port.t':'OUR MODELS',
+    'mc.falcon.tag':'☀️ Solar · 2+2 Seats','mc.falcon.d':'For those seeking innovation, integrated solar power and family comfort.',
+    'mc.apollo.tag':'🏆 High Performance','mc.apollo.d':'Mechanical robustness and Cruise Control exclusive to the Brazilian market.',
+    'mc.dco.tag':'🤖 Autopilot','mc.dco.d':'The first and only electric cart with autopilot on the market.','mc.see':'View model ›',
+    'test.ey':'Testimonials','test.t':'TRUSTED BY OUR CLIENTS',
+    'test.1':'"The Apollo completely changed mobility at our condo. Robust, silent, and maintenance is minimal."','test.1name':'Roberto M.','test.1role':'Board Manager — Boa Vista Condominium',
+    'test.2':'"The Falcon\\'s solar power actually works. We saved a lot on charging and guests love it."','test.2name':'Camila S.','test.2role':'Manager — Premium Resort',
+    'pf.tag1':'DISCOVER THE FUTURE OF TRANSPORT','pf.tag2':'INNOVATION · VERSATILITY · SUSTAINABILITY','pf.tag3':'ENGINEERING + PERFORMANCE',
+    'pf.tag4':'© 2025 DACH Motors Brazil · All rights reserved<br>dachmotorsbrasil.com.br · @dach.motorsbrasil',
+    'emp.ey':'About DACH Motors','emp.t1':'REDEFINING','emp.t2':'MOBILITY',
+    'emp.p1a':'DACH Motors','emp.p1b':'operates strategically to build an ecosystem of','emp.p1c':'sustainable mobility','emp.p1d':', with healthy margins, competitive differentiation and a portfolio aligned with the demands of the Brazilian market.',
+    'emp.p2':'We serve everything from residential and urban applications to leisure operations and commercial use — delivering electric mobility that works, lasts, and makes real-world sense.',
+    'emp.tech':'Technical Specifications','sp.motor':'Electric Motor','sp.motor.l':'6.3 kW Power','sp.ctrl':'AC Controller','sp.ctrl.l':'Smart 72V System','sp.chg':'Internal Charger','sp.chg.l':'110–240V Dual Voltage',
+    'diag.t':'SYSTEM DIAGRAM','pillar.ey':'Brand Pillars',
+    'pillar.1t':'INNOVATION','pillar.1d':'72V AC motor with efficiency superior to traditional 48V systems — more acceleration, more torque, less heat generated.',
+    'pillar.2t':'VERSATILITY','pillar.2d':'Full portfolio: condominiums, clubs, hotels, resorts, farms and urban operations — a DACH for every scenario.',
+    'pillar.3t':'SUSTAINABILITY','pillar.3d':'At DACH Motors, solar energy is not an accessory — it is part of the product logic and our purpose as a company.',
+    'pillar.4t':'AUTOMOTIVE QUALITY','pillar.4d':'Electrodialytic monobloc chassis, single-piece forged ergonomic seats and automotive-grade finishing across all models.',
+    'mkt.ey':'Markets We Serve','mkt.1':'CONDOS','mkt.1d':'Residential condominiums and gated communities','mkt.2':'CLUBS','mkt.2d':'Golf clubs and premium sports clubs',
+    'mkt.3':'HOTELS','mkt.3d':'Resorts, inns and premium hospitality','mkt.4':'FARMS','mkt.4d':'Rural properties and agribusiness',
+    'mkt.5':'URBAN','mkt.5d':'Urban mobility and last-mile delivery','mkt.6':'INDUSTRY','mkt.6d':'Industrial plants and internal logistics',
+    'tl.ey':'Our Journey','tl.1t':'DACH Motors Founded','tl.1d':'Development begins on 72V AC technology for electric mobility.',
+    'tl.2t':'Apollo Launch','tl.2d':'First model with Cruise Control exclusive to the Brazilian market.',
+    'tl.3t':'Falcon Solar & DCO Autopilot','tl.3d':'Portfolio expansion with integrated solar power and autopilot.',
+    'tl.4y':'TODAY','tl.4t':'National Expansion','tl.4d':'Growing network of partners and dealers across Brazil.',
+    'emp.cta':'View All Models →',
+    'mod.ey':'Full Portfolio','mod.t':'MODELS','mst.performance':'🏆 Performance','mst.performance2':'Performance',
+    'mp.falcon.badge':'☀️ Solar · 2+2 Seats · LiFePO4','mp.falcon.tag':'Solar, innovation and comfort',
+    'sm.motor':'Motor','sm.battery':'Battery','sm.seats':'Seats','sm.charge':'Charge','sm.ctrl':'Control','sm.sensors':'Sensors','sm.pilot':'Pilot',
+    'cpk.color':'Color:',
+    'mp.falcon.desc':'The <strong>Falcon 2+2</strong> is DACH\\'s answer for those who want energy efficiency with family and operational versatility. At DACH Motors, solar energy is not an accessory — it is part of the product logic and our purpose.',
+    'ff.1t':'Solar Integration','ff.1d':'Integrated solar panel reduces grid consumption and operating costs.',
+    'ff.2d':'73.6V / 105Ah. Safer, more durable and thermally stable than conventional batteries.',
+    'ff.3t':'5.3 kW AC Motor','ff.3d':'Consistent torque and superior efficiency delivered in any driving condition.',
+    'ff.4t':'Flexible Charging','ff.4d':'110V to 240V via integrated smart internal charger of 20A.',
+    'ff.5t':'2+2 Passenger Configuration','ff.5d':'Ideal for passenger transport in condominiums, leisure, clubs and family use.',
+    'ff.6t':'Dual Monophonic Cluster','ff.6d':'Automotive-grade finishing with premium upholstery quality.',
+    'mp.gallery':'Model Gallery','mp.btn360':'View in 360° 🔄','mp.btnFalcon':'Request Falcon Proposal',
+    'mp.apollo.badge':'🏆 High Performance · Cruise Control','mp.apollo.tag':'Robustness and superior comfort',
+    'mp.apollo.desc':'The <strong>Apollo</strong> is the model for those who prioritize mechanical robustness and superior comfort. With <strong>Cruise Control exclusive to the Brazilian market</strong>, ensuring stable and continuous driving on any terrain.',
+    'fa.1t':'Exclusive Cruise Control','fa.1d':'Unique in the Brazilian market — stable and continuous driving with no effort.',
+    'fa.2t':'Electrodialytic Monobloc Chassis','fa.2d':'Structure that increases corrosion resistance and vehicle lifespan.',
+    'fa.3t':'Unique Ergonomic Seats','fa.3d':'Single-piece forged with real comfort and premium automotive finishing.',
+    'fa.4t':'Reinforced Brakes & Suspension','fa.4d':'Adapted for use in urban environments, condominiums and leisure operations.',
+    'fa.5t':'High-Performance 72V Battery','fa.5d':'Consistent range for intense, demanding daily operations.',
+    'mp.btnApollo':'Request Apollo Proposal',
+    'mp.dco.badge':'🤖 Autopilot · Market Exclusive','mp.dco.tag':'The future is now',
+    'mp.dco.desc':'The <strong>DACH DCO</strong> represents the pinnacle of DACH engineering: the <strong>first and only electric cart with autopilot available on the market</strong>. Cutting-edge automotive technology applied to sustainable mobility.',
+    'fd.1t':'DACH OS Autopilot','fd.1d':'Integrated autonomous navigation system — the first of its kind in Brazil.',
+    'fd.2t':'Automotive Central Display','fd.2d':'High-end display with complete and intuitive DACH OS interface.',
+    'fd.3t':'Automotive Steering Wheel','fd.3d':'Premium automotive-grade quality and ergonomics.',
+    'fd.4t':'Sensor Array','fd.4d':'Cameras and LIDAR sensors for safe navigation in any enclosed environment.',
+    'mp.btnDco':'Request DCO Proposal',
+    'cmp.ey':'Comparison','cmp.t':'WHICH ONE TO CHOOSE?','cmp.spec':'Spec','cmp.motor':'Motor','cmp.solar':'Solar','cmp.cruise':'Cruise Ctrl','cmp.auto':'Autopilot','cmp.seats':'Seats',
+    'v3.ey':'Interactive Viewer','v3.t':'EXPLORE IN 360°','v3.motor':'Motor','v3.power':'Power','v3.battery':'Battery','v3.cap':'Cap.','v3.reset':'↻ RESET',
+    'v3.hud1':'↕️ Drag','v3.hud2':'🔍 Scroll','v3.hud3':'👆 Pinch',
+    'ct.ey':'Become a DACH Partner','ct.t1':'JOIN THE','ct.t2':'FUTURE',
+    'ct.p':'At DACH Motors, we deliver electric mobility that works, lasts and makes real-world sense. Expanding market, dedicated support and a portfolio with real differentiation.',
+    'ct.why':'Why become a partner?','ct.w1':'EXPANSION','ct.w1d':'Electric mobility market growing rapidly in Brazil.',
+    'ct.w2':'MARGIN','ct.w2d':'Healthy margin structure and real competitive differentiation.',
+    'ct.w3':'SUPPORT','ct.w3d':'Dedicated technical support across all models and configurations.',
+    'ct.w4':'PORTFOLIO','ct.w4d':'Standard technology package across the entire DACH lineup.',
+    'ct.faq':'Frequently Asked Questions',
+    'faq.q1':'What is the battery range?','faq.a1':'The 105Ah LiFePO4 batteries offer range for intense daily use in condominiums and commercial operations, with a lifespan far superior to traditional lead-acid batteries.',
+    'faq.q2':'What is the delivery time?','faq.a2':'Delivery time varies depending on the model and quantity. Our consultant will provide the exact timeline after you submit the interest form.',
+    'faq.q3':'Is there a factory warranty?','faq.a3':'Yes, all DACH models include a factory warranty and dedicated after-sales technical support.',
+    'faq.q4':'Can I resell DACH models?','faq.a4':'Yes! DACH Motors is looking for partners and dealers across Brazil, with healthy margins and full support.',
+    'ct.talk':'Get in Touch','cl.web':'Website','cl.wa':'Chat now on WhatsApp',
+    'ct.form':'Contact Form','fm.name':'Full Name','fm.name.ph':'Your full name','fm.phone':'WhatsApp / Phone','fm.city':'City / State','fm.city.ph':'Ex: São Paulo / SP',
+    'fm.model':'Model of Interest','fm.select':'Select a model','fm.opt1':'Falcon — Solar 2+2','fm.opt2':'Apollo — High Performance','fm.opt3':'DACH DCO — Autopilot','fm.opt4':'Entire DACH lineup','fm.opt5':'I want to become a dealer',
+    'fm.msg':'Message','fm.msg.ph':'Tell us about your project, interest or questions…','fm.send':'Send Request →','fm.back':'← Back to Models',
+    'tab.home':'Home','tab.company':'Company','tab.models':'Models','tab.contact':'Contact','wa.tooltip':'Chat on WhatsApp'
+  }
+};
+const PT_CACHE={};
+function buildPtCache(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');PT_CACHE[k]=el.innerHTML});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');PT_CACHE['ph:'+k]=el.getAttribute('placeholder')});
+}
+function applyLang(lang){
+  WALANG=lang;
+  document.documentElement.lang=lang==='en'?'en':'pt-BR';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(lang==='en'){ if(I18N.en[k]!==undefined) el.innerHTML=I18N.en[k]; }
+    else { if(PT_CACHE[k]!==undefined) el.innerHTML=PT_CACHE[k]; }
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-ph');
+    if(lang==='en'){ if(I18N.en[k]!==undefined) el.setAttribute('placeholder',I18N.en[k]); }
+    else { if(PT_CACHE['ph:'+k]!==undefined) el.setAttribute('placeholder',PT_CACHE['ph:'+k]); }
+  });
+  document.getElementById('langLbl').textContent=lang==='en'?'PT':'EN';
+}
+function toggleLang(){ applyLang(WALANG==='pt'?'en':'pt'); }
+function openWA(){
+  const msg=WALANG==='en'
+    ?'Hello! I am interested in DACH Motors electric carts. Could you send me more information?'
+    :'Olá! Tenho interesse nos carrinhos elétricos DACH Motors. Pode me enviar mais informações?';
+  window.open('https://wa.me/5511999999999?text='+encodeURIComponent(msg),'_blank');
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  buildPtCache();
+  // ensure first page is correctly positioned
+  pgs.forEach((p,i)=>{
+    if(i!==0){p.style.transform='translateX(100%)'}
+    else{p.style.transform='translateX(0)';p.classList.add('active')}
+  });
+});
+</script>
+</body>
+</html>
